@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -29,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Field;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -54,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         configuracionInicialOnReady(mMap);
 
-
+        cargarHistoria();
     }
 
     private void configuracionInicialOnReady(GoogleMap mMap) {
@@ -75,9 +79,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-
-        crearHistoria();
-        historia.colocarMarcas(mMap);
     }
 
     private void solicitarAccesoUbicacion() {
@@ -94,8 +95,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    private void cargarHistoria(){
+        crearHistoria();
+        LatLng coor;
+        int drawableResourceId;
+        for (int i = 0; i < historia.getMisiones().size(); i++) {
+            coor = new LatLng(Double.parseDouble(historia.getMisiones().get(i).getLatitud()), Double.parseDouble(historia.getMisiones().get(i).getLongitud()));
+
+            drawableResourceId = this.getResources().getIdentifier(historia.getMisiones().get(i).getIcono(), "drawable", this.getPackageName());
+            Bitmap b = ((BitmapDrawable) getResources().getDrawable(drawableResourceId)).getBitmap();
+            Bitmap smallMarker = Bitmap.createScaledBitmap(b, 80, 80, false);
+
+            mMap.addMarker(new MarkerOptions()
+                    .position(coor)
+                    .title(historia.getMisiones().get(i).getNombre())
+                    .icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
+            );
+        }
+    }
+
     private void crearHistoria(){
-        InputStream inputStream = getResources().openRawResource(R.raw.fichero);
+        int drawableResourceId = this.getResources().getIdentifier("fichero", "raw", this.getPackageName());
+
+        InputStream inputStream = getResources().openRawResource(drawableResourceId);
         String txt="";
         try {
             byte[] buffer = new byte[inputStream.available()];

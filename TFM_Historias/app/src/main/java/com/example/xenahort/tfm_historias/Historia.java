@@ -1,8 +1,11 @@
 package com.example.xenahort.tfm_historias;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -48,12 +51,8 @@ public class Historia {
         Log.d("mision", m.toString());
     }
 
-    public void colocarMarcas(GoogleMap mMap) {
-        LatLng coor;
-        for(int i=0;i<misiones.size();i++){
-            coor = new LatLng(Double.parseDouble(misiones.get(i).getLatitud()), Double.parseDouble(misiones.get(i).getLongitud()));
-            mMap.addMarker(new MarkerOptions().position(coor).title(misiones.get(i).getNombre()));
-        }
+    public List<Mision> getMisiones() {
+        return misiones;
     }
 
     @Override
