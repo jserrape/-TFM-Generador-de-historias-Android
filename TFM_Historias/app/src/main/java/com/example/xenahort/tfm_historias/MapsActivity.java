@@ -20,7 +20,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -29,6 +34,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Configuracion conf;
+
+    private Historia historia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         configuracionInicialOnReady(mMap);
+
+
     }
 
     private void configuracionInicialOnReady(GoogleMap mMap) {
@@ -65,6 +74,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng center = new LatLng(37.1708, -3.607212);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
+        crearHistoria();
+        historia.colocarMarcas(mMap);
     }
 
     private void solicitarAccesoUbicacion() {
@@ -78,6 +91,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         } else {
             ActivityCompat.requestPermissions(this, permissions, VariablesMap.LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    private void crearHistoria(){
+        InputStream inputStream = getResources().openRawResource(R.raw.fichero);
+        String txt="";
+        try {
+            byte[] buffer = new byte[inputStream.available()];
+            while (inputStream.read(buffer) != -1){
+                txt = new String(buffer);
+            }
+            JSONObject object = new JSONObject(txt);
+            this.historia=new Historia(object.getString("Codigo"),object.getString("Descripcion"),object.getString("Nombre historia"));
+            JSONArray json_array = object.optJSONArray("Misiones");
+            for (int i = 0; i < json_array.length(); i++) {
+                historia.nuevaMision(json_array.getJSONObject(i).toString());
+            }
+            Log.d("tostringhistoria", this.historia.toString());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 }
