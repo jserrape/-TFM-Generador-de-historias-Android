@@ -2,6 +2,7 @@ package com.example.xenahort.tfm_historias;
 
 import android.content.SharedPreferences;
 
+import com.example.xenahort.tfm_historias.activities.MapsActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.MapStyleOptions;
 

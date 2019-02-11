@@ -1,6 +1,8 @@
 package com.example.xenahort.tfm_historias;
 
-public class Mision {
+import java.io.Serializable;
+
+public class Mision implements Serializable {
     private String cod_mision;
     private String nombre;
     private String pista;

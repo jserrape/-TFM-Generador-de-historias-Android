@@ -1,4 +1,4 @@
-package com.example.xenahort.tfm_historias;
+package com.example.xenahort.tfm_historias.activities;
 
 import android.Manifest;
 import android.content.Context;
@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.example.xenahort.tfm_historias.Configuracion;
+import com.example.xenahort.tfm_historias.Historia;
+import com.example.xenahort.tfm_historias.R;
+import com.example.xenahort.tfm_historias.VariablesMap;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -49,7 +53,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         conf= new Configuracion(getSharedPreferences("Preferencias",Context.MODE_PRIVATE));
-        solicitarAccesoUbicacion();
     }
 
 
@@ -78,25 +81,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng center = new LatLng(37.1708, -3.607212);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-    }
-
-    private void solicitarAccesoUbicacion() {
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), VariablesMap.FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(this.getApplicationContext(), VariablesMap.COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                VariablesMap.mLocationPermissionsGranted = true;
-            } else {
-                ActivityCompat.requestPermissions(this, permissions, VariablesMap.LOCATION_PERMISSION_REQUEST_CODE);
-            }
-        } else {
-            ActivityCompat.requestPermissions(this, permissions, VariablesMap.LOCATION_PERMISSION_REQUEST_CODE);
-        }
     }
 
     private void cargarHistoria(){
-        crearHistoria();
+        this.historia= (Historia) getIntent().getSerializableExtra("Historia");
+
         LatLng coor;
         int drawableResourceId;
         for (int i = 0; i < historia.getMisiones().size(); i++) {
@@ -114,27 +103,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    private void crearHistoria(){
-        int drawableResourceId = this.getResources().getIdentifier("fichero", "raw", this.getPackageName());
-
-        InputStream inputStream = getResources().openRawResource(drawableResourceId);
-        String txt="";
-        try {
-            byte[] buffer = new byte[inputStream.available()];
-            while (inputStream.read(buffer) != -1){
-                txt = new String(buffer);
-            }
-            JSONObject object = new JSONObject(txt);
-            this.historia=new Historia(object.getString("Codigo"),object.getString("Descripcion"),object.getString("Nombre historia"));
-            JSONArray json_array = object.optJSONArray("Misiones");
-            for (int i = 0; i < json_array.length(); i++) {
-                historia.nuevaMision(json_array.getJSONObject(i).toString());
-            }
-            Log.d("tostringhistoria", this.historia.toString());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 }

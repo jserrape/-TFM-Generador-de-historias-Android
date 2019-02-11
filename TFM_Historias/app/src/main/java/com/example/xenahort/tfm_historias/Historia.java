@@ -12,10 +12,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Historia {
+public class Historia implements Serializable {
     private String Codigo;
     private String Descripcion;
     private String Nombre;
@@ -53,6 +54,10 @@ public class Historia {
 
     public List<Mision> getMisiones() {
         return misiones;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
     }
 
     @Override
