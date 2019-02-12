@@ -1,3 +1,12 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 12/02/19 2:52
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/02/19 2:38
+ *
+ */
+
 package com.example.xenahort.tfm_historias.activities;
 
 import android.Manifest;
@@ -7,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -49,6 +59,7 @@ public class PresentacionHistoriaActivity extends AppCompatActivity {
 
         TextView entry = (TextView) findViewById(R.id.textViewDescripcionHistoria);
         entry.setText(this.historia.getDescripcion());
+        entry.setMovementMethod(new ScrollingMovementMethod());
 
         ImageView imageview= (ImageView)findViewById(R.id.imageViewTitulo);
         imageview.setImageResource(this.getResources().getIdentifier(historia.getImagenTitulo(), "drawable", this.getPackageName()));

@@ -1,24 +1,27 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 12/02/19 2:51
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/02/19 1:51
+ *
+ */
+
 package com.example.xenahort.tfm_historias.activities;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.Toast;
 
 import com.example.xenahort.tfm_historias.Configuracion;
 import com.example.xenahort.tfm_historias.Historia;
 import com.example.xenahort.tfm_historias.R;
-import com.example.xenahort.tfm_historias.VariablesMap;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,19 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Field;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 

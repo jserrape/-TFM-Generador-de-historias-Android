@@ -1,13 +1,15 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 12/02/19 2:52
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/02/19 1:42
+ *
+ */
+
 package com.example.xenahort.tfm_historias;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;

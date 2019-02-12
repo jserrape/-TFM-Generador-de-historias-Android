@@ -1,3 +1,12 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 12/02/19 2:52
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 11/02/19 16:07
+ *
+ */
+
 package com.example.xenahort.tfm_historias;
 
 import android.content.SharedPreferences;
