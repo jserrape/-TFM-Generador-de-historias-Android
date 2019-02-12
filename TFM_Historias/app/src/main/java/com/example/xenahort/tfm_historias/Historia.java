@@ -20,13 +20,21 @@ public class Historia implements Serializable {
     private String Codigo;
     private String Descripcion;
     private String Nombre;
+    private int zoom_inicial;
+    private String imagenTitulo;
+    private String longInicial;
+    private String latInicial;
     private List<Mision> misiones;
 
-    public Historia(String cod, String des, String nom) {
+    public Historia(String cod, String des, String nom,String zi,String it,String loi,String lai) {
         this.Codigo = cod;
         this.Descripcion = des;
         this.Nombre = nom;
         this.misiones = new ArrayList<>();
+        this.zoom_inicial=Integer.parseInt(zi);
+        this.imagenTitulo=it;
+        this.longInicial=loi;
+        this.latInicial=lai;
     }
 
     public void nuevaMision(String mision) throws JSONException {
@@ -58,6 +66,22 @@ public class Historia implements Serializable {
 
     public String getDescripcion() {
         return Descripcion;
+    }
+
+    public int getZoom_inicial() {
+        return zoom_inicial;
+    }
+
+    public String getImagenTitulo() {
+        return imagenTitulo;
+    }
+
+    public String getLongInicial() {
+        return longInicial;
+    }
+
+    public String getLatInicial() {
+        return latInicial;
     }
 
     @Override

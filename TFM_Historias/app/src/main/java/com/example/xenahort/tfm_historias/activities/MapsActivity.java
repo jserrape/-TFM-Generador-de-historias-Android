@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.example.xenahort.tfm_historias.Configuracion;
 import com.example.xenahort.tfm_historias.Historia;
@@ -65,6 +67,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void configuracionInicialOnReady(GoogleMap mMap) {
+        this.historia= (Historia) getIntent().getSerializableExtra("Historia");
+
         //Pongo un nuevo estilo al mapa
         conf.ponerEstilo(mMap, this);
 
@@ -78,17 +82,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
         //Pongo la camara en el sitio de prueba
-        LatLng center = new LatLng(37.1708, -3.607212);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
+        LatLng center = new LatLng(Double.parseDouble(historia.getLatInicial()), Double.parseDouble(historia.getLongInicial()));
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(historia.getZoom_inicial()).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
     private void cargarHistoria(){
-        this.historia= (Historia) getIntent().getSerializableExtra("Historia");
-
         LatLng coor;
         int drawableResourceId;
         for (int i = 0; i < historia.getMisiones().size(); i++) {
+            Log.d("MARCADOR", i+":"+historia.getMisiones().get(i).getNombre());
             coor = new LatLng(Double.parseDouble(historia.getMisiones().get(i).getLatitud()), Double.parseDouble(historia.getMisiones().get(i).getLongitud()));
 
             drawableResourceId = this.getResources().getIdentifier(historia.getMisiones().get(i).getIcono(), "drawable", this.getPackageName());
