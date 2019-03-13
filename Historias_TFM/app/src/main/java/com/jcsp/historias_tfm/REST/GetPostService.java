@@ -11,7 +11,6 @@ public interface GetPostService {
     @FormUrlEncoded
     Call<Respuesta> crearUsuario(@Field("email") String email,
                                 @Field("nombre") String nombre,
-                                @Field("apellidos") String apellidos,
                                 @Field("password") String password,
                                 @Field("imagen_usu") String imagen_usu);
 }

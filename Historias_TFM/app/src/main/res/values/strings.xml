@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Historias_TFM</string>
-
     <string name="facebook_app_id">394272374738825</string>
+
+    <!--- Errores -->
+    <string name="error_conexion">Se ha producido un error en la conexión</string>
 
     <!--- Main Activity -->
     <string name="cancel_login">Login cancelado</string>

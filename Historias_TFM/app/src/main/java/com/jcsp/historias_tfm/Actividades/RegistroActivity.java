@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,13 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.jcsp.historias_tfm.R;
+import com.jcsp.historias_tfm.REST.ApiUtils;
+import com.jcsp.historias_tfm.REST.GetPostService;
+import com.jcsp.historias_tfm.REST.Respuesta;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -44,7 +52,20 @@ public class RegistroActivity extends AppCompatActivity {
                 if(usuario.getText().toString().trim().isEmpty() || email.getText().toString().trim().isEmpty() || pass.getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), R.string.rellenar, Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Pulando boton", Toast.LENGTH_SHORT).show();
+                    GetPostService mAPIService = ApiUtils.getAPIService();
+                    mAPIService.crearUsuario(email.getText().toString(), usuario.getText().toString(), pass.getText().toString(), "13").enqueue(new Callback<Respuesta>() {
+
+                        @Override
+                        public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                            Log.d("RespuestaRegistro", response.body().toString());
+                            Toast.makeText(getApplicationContext(), response.body().getResulado(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Respuesta> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
             }
