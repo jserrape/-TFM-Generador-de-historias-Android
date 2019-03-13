@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actividades.RegistroActivity" android:parentActivityName=".Actividades.LoginActivity"/>
+        <activity android:name=".Actividades.RegistroActivity" android:parentActivityName=".Actividades.MainActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".Actividades.LoginActivity">
+        <activity android:name=".Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,7 +14,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.jcsp.historias_tfm.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
