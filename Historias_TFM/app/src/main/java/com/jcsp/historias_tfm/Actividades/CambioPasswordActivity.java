@@ -68,9 +68,7 @@ public class CambioPasswordActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                             Log.d("RespuestaRegistro", response.body().toString());
-                            //TODO Cambiar mensaje del servidor en función del codigo que llegue
-                            AlertDialog.Builder builder = new AlertDialog.Builder(act);
-
+                            //TODO Cambiar "act" por una referencia al padre
                             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(act);
                             dialogo1.setMessage(R.string.mail_enviado);
                             dialogo1.setCancelable(false);

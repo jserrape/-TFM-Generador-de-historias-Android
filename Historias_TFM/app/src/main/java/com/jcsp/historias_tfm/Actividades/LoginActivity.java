@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
 
         passOlvidada.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //TODO Cambiar por acividad para cambio de password
                 Toast.makeText(getApplicationContext(), "Cambiar por acividad para cambio de password", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, CambioPasswordActivity.class);
                 startActivityForResult(intent, 0);
@@ -68,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("RespuestaRegistro", response.body().toString());
                             if(Integer.parseInt(response.body().getStatus())==200){
                                 Toast.makeText(getApplicationContext(), "Inicio correcto", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, ListaHistoriasActivity.class);
+                                startActivityForResult(intent, 0);
                             }else{
                                 Toast.makeText(getApplicationContext(), "Inicio mal", Toast.LENGTH_SHORT).show();
                             }
