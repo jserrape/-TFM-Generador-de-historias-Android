@@ -13,4 +13,9 @@ public interface GetPostService {
                                 @Field("nombre") String nombre,
                                 @Field("password") String password,
                                 @Field("imagen_usu") String imagen_usu);
+
+    @POST("/rest/login")
+    @FormUrlEncoded
+    Call<Respuesta> loginUsuario(@Field("email") String email,
+                                 @Field("password") String password);
 }

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private LoginButton loginButton;
 
     private Button btnRegistro;
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        //Login
+        btnLogin = (Button) findViewById(R.id.loginacceso);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivityForResult(intent, 0);
             }
         });

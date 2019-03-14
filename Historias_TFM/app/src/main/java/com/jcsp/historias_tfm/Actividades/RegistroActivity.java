@@ -31,11 +31,11 @@ import retrofit2.Response;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    ImageButton gallery;
-    EditText usuario;
-    EditText email;
-    EditText pass;
-    Button botonregistro;
+    private ImageButton gallery;
+    private EditText usuario;
+    private EditText email;
+    private EditText pass;
+    private Button botonregistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class RegistroActivity extends AppCompatActivity {
         //gallery.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
 
 
-
         usuario = (EditText) findViewById(R.id.registrousuario);
         email = (EditText) findViewById(R.id.registroemail);
         pass = (EditText) findViewById(R.id.registropass);
@@ -69,8 +68,6 @@ public class RegistroActivity extends AppCompatActivity {
                 if(usuario.getText().toString().trim().isEmpty() || email.getText().toString().trim().isEmpty() || pass.getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), R.string.rellenar, Toast.LENGTH_SHORT).show();
                 }else{
-                    GetPostService mAPIService = ApiUtils.getAPIService();
-
                     String usu=usuario.getText().toString();
                     String mail = email.getText().toString();
                     String password = cifrarPassword(pass.getText().toString());
@@ -81,6 +78,7 @@ public class RegistroActivity extends AppCompatActivity {
                     byte[] byteArray = byteArrayOutputStream .toByteArray();
                     String imagen = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
+                    GetPostService mAPIService = ApiUtils.getAPIService();
                     mAPIService.crearUsuario(mail, usu, password, imagen).enqueue(new Callback<Respuesta>() {
 
                         @Override
@@ -88,6 +86,8 @@ public class RegistroActivity extends AppCompatActivity {
                             Log.d("RespuestaRegistro", response.body().toString());
                             //TODO Cambiar mensaje del servidor en función del codigo que llegue
                             Toast.makeText(getApplicationContext(), response.body().getResulado(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                            startActivityForResult(intent, 0);
                         }
 
                         @Override
