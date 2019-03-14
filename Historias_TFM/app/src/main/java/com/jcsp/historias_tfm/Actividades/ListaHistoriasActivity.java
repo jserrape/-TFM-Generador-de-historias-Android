@@ -3,8 +3,11 @@ package com.jcsp.historias_tfm.Actividades;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.jcsp.historias_tfm.R;
@@ -20,10 +23,14 @@ import retrofit2.Response;
 
 public class ListaHistoriasActivity extends AppCompatActivity {
 
+    private ListaHistoriasActivity clase;
+
     private ListView lst;
     private String historiasNombres[];
-    private ListaHistoriasActivity clase;
     private ProgressDialog progressDialog;
+    private SearchView theFilter;
+
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +44,6 @@ public class ListaHistoriasActivity extends AppCompatActivity {
 
         clase = this;
         get_historias();
-
-
-        //https://github.com/xenahort/Aplicacion_Android_maps_receptiva_y_adaptable/blob/master/DSS_proyect/app/src/main/java/com/example/xenahort/dss_proyect/Activitys/ListaFarmaciasActivity.java
     }
 
     private void get_historias(){
@@ -56,8 +60,23 @@ public class ListaHistoriasActivity extends AppCompatActivity {
                 }
                 lst = findViewById(R.id.listahistorias);
                 //TODO Cambiar "clase" por una referencia al padre
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(clase, android.R.layout.simple_list_item_1, android.R.id.text1, historiasNombres);
+                adapter = new ArrayAdapter<String>(clase, android.R.layout.simple_list_item_1, android.R.id.text1, historiasNombres);
                 lst.setAdapter(adapter);
+                theFilter = (SearchView) findViewById(R.id.searchFilter);
+                theFilter.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        (clase).adapter.getFilter().filter(query);
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        (clase).adapter.getFilter().filter(newText);
+                        return true;
+                    }
+                });
+
                 progressDialog.dismiss();
             }
 
