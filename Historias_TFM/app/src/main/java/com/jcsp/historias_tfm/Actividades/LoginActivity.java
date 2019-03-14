@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v){
                 //TODO Cambiar por acividad para cambio de password
                 Toast.makeText(getApplicationContext(), "Cambiar por acividad para cambio de password", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, CambioPasswordActivity.class);
                 startActivityForResult(intent, 0);
             }
         });

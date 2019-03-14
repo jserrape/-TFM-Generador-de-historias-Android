@@ -12,7 +12,8 @@ El editor facilitará el diseño de las experiencias y generara ficheros de conf
 El listado de rutas del servidor a las que el cliente realizará peticiones es el siguiente:
 
 - Registro: '/rest/usuario' [POST]
-- Login:
+- Login: '/rest/login' [POST]
+- Solicitar recuperar contraseña: '/rest/cambio' [POST]
 - Solicitar listado básico de historias (id, nombre): '/historia/list' [GET]
 - Solicitar información básica de una historia (nombre, descripción, imagen de título):
 - Solicitar la información completa de una historia: '/historia/<id>' [GET]

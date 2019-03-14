@@ -13,13 +13,18 @@
     <string name="acceso">Acceso</string>
     <string name="nueva_cuenta">Nueva cuenta</string>
 
-
     <!--- Registro -->
     <string name="usuario">Usuario</string>
     <string name="email">Email</string>
     <string name="pass">Contraseña</string>
     <string name="registro">Registro</string>
     <string name="rellenar">Por favor, rellene todos los campos</string>
+
+    <!--- Cambiar contraseña -->
+    <string name="cambiar_pass">Cambiar contraseña</string>
+    <string name="texto_cambiar_pass">Introduce tu correo electrónico y se enviará una soliciud de cambio de su contraseña.</string>
+    <string name="mail_invalid">El email introducido no es válido</string>
+    <string name="mail_enviado">Se le ha enviado un correo electrónico, esa acción puede tardar unos minutos.</string>
 
 
 </resources>
