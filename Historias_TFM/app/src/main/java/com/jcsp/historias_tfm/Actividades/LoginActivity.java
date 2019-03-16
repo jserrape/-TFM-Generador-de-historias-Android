@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
 
         passOlvidada.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Toast.makeText(getApplicationContext(), "Cambiar por acividad para cambio de password", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, CambioPasswordActivity.class);
                 startActivityForResult(intent, 0);
             }
@@ -82,6 +82,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Imagen
+        ImageView img= (ImageView) findViewById(R.id.imageViewLogin);
+        img.setImageResource(R.drawable.imagen_login);
     }
 
 

@@ -6,46 +6,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Actividades.RegistroActivity">
 
+    <TextView
+        android:id="@+id/creacuentatext"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_above="@+id/registroimage"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="¡Crea una cuenta antes de comenzar a descubrir historias!"
+        android:textSize="17dp" />
+
     <ImageButton
         android:id="@+id/registroimage"
         android:layout_width="123dp"
         android:layout_height="120dp"
         android:layout_above="@+id/registrousuario"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="25dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/registrousuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/default_profile" />
 
-    <TextView
-        android:id="@+id/creacuentatext"
-        android:layout_width="332dp"
-        android:layout_height="42dp"
-        android:layout_above="@+id/registroimage"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="15dp"
-        android:text="¡Crea una cuenta antes de comenzar a descubrir historias!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    v<EditText
+    <EditText
         android:id="@+id/registrousuario"
-        android:layout_width="wrap_content"
+        android:layout_width="267dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/registroemail"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="97dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="39dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="textPersonName"
@@ -55,14 +49,11 @@
 
     <EditText
         android:id="@+id/registroemail"
-        android:layout_width="wrap_content"
+        android:layout_width="267dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/registropass"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -72,14 +63,12 @@
 
     <EditText
         android:id="@+id/registropass"
-        android:layout_width="wrap_content"
+        android:layout_width="267dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/botonregistrar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="48dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="@string/pass"
         android:inputType="textPassword"
@@ -89,18 +78,11 @@
 
     <Button
         android:id="@+id/botonregistrar"
-        android:layout_width="112dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/registro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

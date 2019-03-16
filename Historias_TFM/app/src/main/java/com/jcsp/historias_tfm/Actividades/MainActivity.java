@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+
+        //Imagen
+        ImageView img= (ImageView) findViewById(R.id.imageViewMain);
+        img.setImageResource(R.drawable.logo_app);
     }
 
     @Override
