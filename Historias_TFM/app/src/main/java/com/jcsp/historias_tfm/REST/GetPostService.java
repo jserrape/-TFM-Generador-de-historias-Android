@@ -39,13 +39,6 @@ public interface GetPostService {
                                  @Field("password") String password);
 
     /**
-     * Obtiene una lista básica de las historias (id, nombre_historia)
-     * @return Lista de las historias
-     */
-    @GET("/historia/list")
-    Call<List<Historia>> getListHistorias();
-
-    /**
      * Función para solicitar al servidor cambiar la contraseña
      * @param email Email del usuario
      * @return Respuesta del servidor
@@ -53,4 +46,17 @@ public interface GetPostService {
     @POST("/rest/cambio")
     @FormUrlEncoded
     Call<Respuesta> solicitud_reseteo_password(@Field("email") String email);
+
+    /**
+     * Obtiene una lista básica de las historias (id, nombre_historia)
+     * @return Lista de las historias
+     */
+    @GET("/historia/list")
+    Call<List<Historia>> getListHistorias();
+
+    @POST("/historia")
+    @FormUrlEncoded
+    Call<Historia> solicitud_datos_historia(@Field("id") String id);
+
+
 }

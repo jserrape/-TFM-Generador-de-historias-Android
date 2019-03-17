@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actividades.HistoriaActivity">
+
+    <!---
+    <ImageView
+        android:id="@+id/imageViewTituloHistoria"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:layout_above="@+id/textViewDescripcionHistoria"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="102dp"
+        app:srcCompat="@drawable/com_facebook_button_icon_blue"
+        android:adjustViewBounds="true"/>
+        -->
+
+    <ImageView
+        android:id="@+id/imageViewTituloHistoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewDescripcionHistoria"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:adjustViewBounds="true" />
+
+
+
+    <TextView
+        android:id="@+id/textViewDescripcionHistoria"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_above="@+id/buttonEmpezarHistoria"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="80dp"
+        android:textSize="17dp"
+        android:layout_gravity="center_vertical|end"
+        android:text="@string/ejemplo" />
+
+    <Button
+        android:id="@+id/buttonEmpezarHistoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="46dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/empezar" />
+
+</RelativeLayout>
