@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actividades.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageViewLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="139dp"
+        android:layout_above="@+id/accedecuentatext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="50dp"
+        tools:srcCompat="@drawable/com_facebook_button_icon_blue" />
+
+    <TextView
+        android:id="@+id/accedecuentatext"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_above="@+id/loginemail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:text="¡Accede a una cuenta para buscar historias!"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/loginemail"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loginpass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/loginpass"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/olvidarpass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/pass"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/olvidarpass"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_above="@+id/botonlogin"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="¿Has olvidado la contraseña?"
+        android:textColor="@color/colorlink" />
+
+    <Button
+        android:id="@+id/botonlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/acceso" />
+
+</RelativeLayout>
