@@ -12,4 +12,8 @@
     <color name="rosa">#FB00FF</color>
     <color name="negro">#000000</color>
     <color name="blanco">#FFFFFF</color>
+
+    <color name="red">#FF0000</color>
+    <color name="green">#78FF00</color>
+    <color name="blue">#001BFF</color>
 </resources>
