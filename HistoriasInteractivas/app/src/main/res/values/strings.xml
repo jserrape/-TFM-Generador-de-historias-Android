@@ -32,4 +32,20 @@
     <!--- Historia -->
     <string name="empezar">Empezar historia</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--- Navigation Drawer -->
+    <string name="mapa">Mapa</string>
+    <string name="perfil">Perfil</string>
+    <string name="misiones">Misiones</string>
+    <string name="gestion">Gestion</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 </resources>

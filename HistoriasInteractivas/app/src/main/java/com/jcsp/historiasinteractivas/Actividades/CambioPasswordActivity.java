@@ -1,3 +1,12 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 18/03/19 9:14
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 18/03/19 5:07
+ *
+ */
+
 package com.jcsp.historiasinteractivas.Actividades;
 
 import android.app.AlertDialog;

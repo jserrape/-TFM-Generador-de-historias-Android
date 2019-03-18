@@ -3,7 +3,7 @@
     package="com.jcsp.historiasinteractivas">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,36 +12,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Actividades.NavigationDrawerActivity"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
         <activity android:name=".Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Actividades.HistoriaActivity"
+        <activity
+            android:name=".Actividades.HistoriaActivity"
             android:parentActivityName=".Actividades.ListaHistoriasActivity" />
-
-        <activity android:name=".Actividades.CambioPasswordActivity"
+        <activity
+            android:name=".Actividades.CambioPasswordActivity"
             android:parentActivityName=".Actividades.LoginActivity" />
-
         <activity android:name=".Actividades.ListaHistoriasActivity" />
-
-        <activity android:name=".Actividades.LoginActivity"
+        <activity
+            android:name=".Actividades.LoginActivity"
             android:parentActivityName=".Actividades.MainActivity" />
-
-        <activity android:name=".Actividades.RegistroActivity"
+        <activity
+            android:name=".Actividades.RegistroActivity"
             android:parentActivityName=".Actividades.MainActivity" />
-
         <activity
             android:name=".Actividades.MapsActivity"
             android:label="@string/title_activity_maps" />

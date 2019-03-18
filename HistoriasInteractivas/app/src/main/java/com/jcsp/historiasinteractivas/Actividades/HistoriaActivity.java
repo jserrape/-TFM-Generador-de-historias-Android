@@ -1,3 +1,12 @@
+/*
+ * *
+ *  * Created by Juan Carlos Serrano Pérez on 18/03/19 9:15
+ *  * Any question send an email to jcsp0003@red.ujaen.es
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 18/03/19 8:09
+ *
+ */
+
 package com.jcsp.historiasinteractivas.Actividades;
 
 import android.content.Intent;
@@ -42,7 +51,7 @@ public class HistoriaActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HistoriaActivity.this, MapsActivity.class);
+                Intent intent = new Intent(HistoriaActivity.this, NavigationDrawerActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
