@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-
+        /*
         //Facebook
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.loginButton);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), R.string.error_login, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         //Registro
         btnRegistro = (Button) findViewById(R.id.loginnueva);
