@@ -5,4 +5,11 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorlink">#1a0dab</color>
+
+    <color name="amarillo">#FFFB00</color>
+    <color name="rojo">#FF0000</color>
+    <color name="verde">#46FF00</color>
+    <color name="rosa">#FB00FF</color>
+    <color name="negro">#000000</color>
+    <color name="blanco">#FFFFFF</color>
 </resources>

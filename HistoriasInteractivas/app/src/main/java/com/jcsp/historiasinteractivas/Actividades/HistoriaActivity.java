@@ -51,8 +51,8 @@ public class HistoriaActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HistoriaActivity.this, NavigationDrawerActivity.class);
-                startActivityForResult(intent, 0);
+                //Intent intent = new Intent(HistoriaActivity.this, NavigationDrawerActivity.class);
+                //startActivityForResult(intent, 0);
             }
         });
     }
