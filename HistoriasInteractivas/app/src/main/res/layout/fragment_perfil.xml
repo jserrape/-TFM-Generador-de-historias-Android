@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Juan Carlos Serrano Pérez on 18/03/19 12:45
+  ~  * Any question send an email to jcsp0003@red.ujaen.es
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 18/03/19 12:45
+  ~  */
+  -->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
-    tools:context=".Fragments.GreenFragment">
+    android:background="@color/amarillo"
+    tools:context=".Fragments.PerfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Green" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

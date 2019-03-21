@@ -53,6 +53,7 @@ public class HistoriaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HistoriaActivity.this, NavigationDrawerActivity.class);
                 startActivityForResult(intent, 0);
+                finish();
             }
         });
     }

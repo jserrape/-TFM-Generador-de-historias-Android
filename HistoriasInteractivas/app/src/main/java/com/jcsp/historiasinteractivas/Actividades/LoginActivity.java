@@ -9,6 +9,8 @@
 
 package com.jcsp.historiasinteractivas.Actividades;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -25,6 +27,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -76,9 +81,30 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                             Log.d("RespuestaRegistro", response.body().toString());
                             if(Integer.parseInt(response.body().getStatus())==200){
-                                Toast.makeText(getApplicationContext(), "Inicio correcto", Toast.LENGTH_SHORT).show();
+
+                                Log.d("DatosUsuario", response.body().getResulado());
+                                JSONObject user = null;
+                                try {
+                                    user = (new JSONObject(response.body().getResulado()));
+                                    //Toast.makeText(getApplicationContext(), user.getString("email"), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), user.getString("nombre"), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), user.getString("imagen"), Toast.LENGTH_SHORT).show();
+                                    SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = prefs.edit();
+                                    editor.putString("email", user.getString("email"));
+                                    editor.putString("nombre", user.getString("nombre"));
+                                    editor.putString("imagen", user.getString("imagen"));
+                                    editor.commit();
+
+                                    Toast.makeText(getApplicationContext(), prefs.getString("imagen","default"), Toast.LENGTH_SHORT).show();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
                                 Intent intent = new Intent(LoginActivity.this, ListaHistoriasActivity.class);
                                 startActivityForResult(intent, 0);
+                                finish();
+
                             }else{
                                 Toast.makeText(getApplicationContext(), "Inicio mal", Toast.LENGTH_SHORT).show();
                             }

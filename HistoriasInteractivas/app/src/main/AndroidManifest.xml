@@ -44,9 +44,6 @@
         <activity
             android:name=".Actividades.RegistroActivity"
             android:parentActivityName=".Actividades.MainActivity" />
-        <activity
-            android:name=".Actividades.MapsActivity"
-            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>

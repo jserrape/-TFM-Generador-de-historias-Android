@@ -1,9 +1,9 @@
 /*
  * *
- *  * Created by Juan Carlos Serrano Pérez on 18/03/19 12:28
+ *  * Created by Juan Carlos Serrano Pérez on 18/03/19 12:48
  *  * Any question send an email to jcsp0003@red.ujaen.es
  *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 18/03/19 11:31
+ *  * Last modified 18/03/19 12:48
  *
  */
 
@@ -22,12 +22,12 @@ import com.jcsp.historiasinteractivas.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlueFragment.OnFragmentInteractionListener} interface
+ * {@link AyudaFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BlueFragment#newInstance} factory method to
+ * Use the {@link AyudaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlueFragment extends Fragment {
+public class AyudaFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +39,7 @@ public class BlueFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public BlueFragment() {
+    public AyudaFragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +49,11 @@ public class BlueFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlueFragment.
+     * @return A new instance of fragment AyudaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlueFragment newInstance(String param1, String param2) {
-        BlueFragment fragment = new BlueFragment();
+    public static AyudaFragment newInstance(String param1, String param2) {
+        AyudaFragment fragment = new AyudaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,7 +74,7 @@ public class BlueFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blue, container, false);
+        return inflater.inflate(R.layout.fragment_ayuda, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
