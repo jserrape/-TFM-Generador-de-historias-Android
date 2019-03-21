@@ -83,13 +83,8 @@ public class ListaHistoriasActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String itemValue = (String) lst.getItemAtPosition(position);
-                        //Toast.makeText(getApplicationContext(), itemValue, Toast.LENGTH_SHORT).show();
                         for(int z=0;z<historiasNombres.length;z++){
                             if(historiasNombres[z]==itemValue){
-                                Toast.makeText(getApplicationContext(), "Posición "+z, Toast.LENGTH_SHORT).show();
-                                // z es la posición dentro de 'response' -> accedo a él y saco el id
-                                int id_hist = response.body().get(z).getId();
-                                Toast.makeText(getApplicationContext(), "ID "+response.body().get(z).getId(), Toast.LENGTH_SHORT).show();
                                 get_historia(response.body().get(z).getId()+"");
                             }
                         }

@@ -16,6 +16,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.jcsp.historiasinteractivas.R;
 
@@ -29,7 +31,6 @@ import com.jcsp.historiasinteractivas.R;
  */
 public class AjustesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -39,27 +40,10 @@ public class AjustesFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public AjustesFragment() {
-        // Required empty public constructor
-    }
+    private Spinner spinner_idioma;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AjustesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AjustesFragment newInstance(String param1, String param2) {
-        AjustesFragment fragment = new AjustesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    public AjustesFragment() {}
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,9 +55,14 @@ public class AjustesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        spinner_idioma = (Spinner) getActivity().findViewById(R.id.spinner_idioma);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.idiomas_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_idioma.setAdapter(adapter);
+
         return inflater.inflate(R.layout.fragment_ajustes, container, false);
     }
 

@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.putString("imagen", user.getString("imagen"));
                                     editor.commit();
 
-                                    Toast.makeText(getApplicationContext(), prefs.getString("imagen","default"), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), prefs.getString("imagen","default"), Toast.LENGTH_SHORT).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

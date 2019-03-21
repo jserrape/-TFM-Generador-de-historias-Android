@@ -49,6 +49,32 @@
     <string name="ayuda">Ayuda</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
 
+    <!--- Ajustes -->
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="plano">Ejecutar en segundo plano</string>
+    <string name="idioma">Idioma</string>
+    <string name="brujula">Brújula</string>
+    <string name="btn_centrar">Botón de centrar</string>
+    <string name="btn_zoom">Botón de zoom</string>
+    <string name="estilo">Estilo del mapa</string>
+    <string name="espanol">Español</string>
+    <string name="ingles">Inglés</string>
+    <string name="estandar">Estándar</string>
+    <string name="dark">Oscuro</string>
+    <string name="silver">Plateado</string>
+    
+    <string-array name="idiomas_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
