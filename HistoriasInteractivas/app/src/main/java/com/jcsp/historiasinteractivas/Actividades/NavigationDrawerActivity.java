@@ -25,7 +25,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.jcsp.historiasinteractivas.Fragments.AjustesFragment;
@@ -136,4 +138,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    public void cambiarFragment(){}
 }

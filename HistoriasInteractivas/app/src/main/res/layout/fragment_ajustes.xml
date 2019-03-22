@@ -25,6 +25,15 @@
         android:layout_marginBottom="55dp"
         android:text="@string/estilo" />
 
+    <Spinner
+        android:id="@+id/spinner_estilo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toEndOf="@+id/textView2" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -34,6 +43,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginBottom="55dp"
         android:text="@string/btn_zoom" />
+
+    <Switch
+        android:id="@+id/switch_btn_zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toEndOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView4"
@@ -45,6 +63,15 @@
         android:layout_marginBottom="55dp"
         android:text="@string/btn_centrar" />
 
+    <Switch
+        android:id="@+id/switch_btn_centrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView5"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toEndOf="@+id/textView4" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
@@ -55,6 +82,15 @@
         android:layout_marginBottom="55dp"
         android:text="@string/brujula" />
 
+    <Switch
+        android:id="@+id/switch_brujula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView6"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toEndOf="@+id/textView5" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -64,6 +100,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginBottom="55dp"
         android:text="@string/idioma" />
+
+    <Spinner
+        android:id="@+id/spinner_idioma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView7"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toEndOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView7"
@@ -76,7 +121,7 @@
         android:text="@string/plano" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switch_segundo_plano"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_ajuses_guardar"
@@ -103,14 +148,5 @@
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="40dp"
         android:text="@string/guardar" />
-
-    <Spinner
-        android:id="@+id/spinner_idioma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView7"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="55dp"
-        android:layout_toEndOf="@+id/textView6" />
 
 </RelativeLayout>
