@@ -23,6 +23,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -52,11 +53,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         }
         mMap.setMyLocationEnabled(true);
         configuracionPreferenciasMapa();
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(Double.parseDouble(nd.getHistoria().getLatitud_historia()), Double.parseDouble(nd.getHistoria().getLongitud_historia()));
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        cargarConfiguracionCamara();
     }
 
     @Override
@@ -97,7 +94,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private void configuracionPreferenciasMapa(){
         //Estilo
         SharedPreferences prefs = this.getActivity().getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-        switch (prefs.getString("estilo", "4")) {
+        switch (prefs.getString("estilo", "0")) {
             case "0":
                 mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.standard));
                 break;
@@ -129,5 +126,12 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
         //Brujula
         mMap.getUiSettings().setCompassEnabled(true);
+    }
+
+    private void cargarConfiguracionCamara(){
+        //Coloco la camara en su sitio y hago zoom
+        LatLng center = new LatLng(nd.getHistoria().getLatitud_historia(), nd.getHistoria().getLongitud_historia());
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(Integer.parseInt(nd.getHistoria().getZoom_historia())).build();
+        this.mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 }

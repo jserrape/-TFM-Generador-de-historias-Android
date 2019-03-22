@@ -10,6 +10,8 @@
 package com.jcsp.historiasinteractivas.Util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Historia implements Serializable {
 
@@ -17,10 +19,11 @@ public class Historia implements Serializable {
     private String nombre_historia;
     private String idioma_historia;
     private String imagen_historia;
-    private String latitud_historia;
-    private String longitud_historia;
+    private Double latitud_historia;
+    private Double longitud_historia;
     private String zoom;
     private String descripcion_historia;
+    private List<Mision> misiones = new ArrayList<Mision>();
 
     public int getId() {
         return id;
@@ -62,19 +65,19 @@ public class Historia implements Serializable {
         this.imagen_historia = imagen_historia;
     }
 
-    public String getLatitud_historia() {
+    public Double getLatitud_historia() {
         return latitud_historia;
     }
 
-    public void setLatitud_historia(String latitud_historia) {
+    public void setLatitud_historia(Double latitud_historia) {
         this.latitud_historia = latitud_historia;
     }
 
-    public String getLongitud_historia() {
+    public Double getLongitud_historia() {
         return longitud_historia;
     }
 
-    public void setLongitud_historia(String longitud_historia) {
+    public void setLongitud_historia(Double longitud_historia) {
         this.longitud_historia = longitud_historia;
     }
 
@@ -86,16 +89,33 @@ public class Historia implements Serializable {
         this.zoom = zoom_historia;
     }
 
+    public String getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(String zoom) {
+        this.zoom = zoom;
+    }
+
+    public List<Mision> getMisiones() {
+        return misiones;
+    }
+
+    public void setList(List<Mision> list) {
+        this.misiones = list;
+    }
+
     @Override
     public String toString() {
         return "Historia{" +
                 "id=" + id +
                 ", nombre_historia='" + nombre_historia + '\'' +
                 ", idioma_historia='" + idioma_historia + '\'' +
-                ", latitud_historia='" + latitud_historia + '\'' +
-                ", longitud_historia='" + longitud_historia + '\'' +
+                ", latitud_historia=" + latitud_historia +
+                ", longitud_historia=" + longitud_historia +
                 ", zoom='" + zoom + '\'' +
                 ", descripcion_historia='" + descripcion_historia + '\'' +
+                ", misiones=" + misiones +
                 '}';
     }
 }
