@@ -19,7 +19,7 @@ public class Historia implements Serializable {
     private String imagen_historia;
     private String latitud_historia;
     private String longitud_historia;
-    private String zoom_historia;
+    private String zoom;
     private String descripcion_historia;
 
     public int getId() {
@@ -79,10 +79,23 @@ public class Historia implements Serializable {
     }
 
     public String getZoom_historia() {
-        return zoom_historia;
+        return zoom;
     }
 
     public void setZoom_historia(String zoom_historia) {
-        this.zoom_historia = zoom_historia;
+        this.zoom = zoom_historia;
+    }
+
+    @Override
+    public String toString() {
+        return "Historia{" +
+                "id=" + id +
+                ", nombre_historia='" + nombre_historia + '\'' +
+                ", idioma_historia='" + idioma_historia + '\'' +
+                ", latitud_historia='" + latitud_historia + '\'' +
+                ", longitud_historia='" + longitud_historia + '\'' +
+                ", zoom='" + zoom + '\'' +
+                ", descripcion_historia='" + descripcion_historia + '\'' +
+                '}';
     }
 }

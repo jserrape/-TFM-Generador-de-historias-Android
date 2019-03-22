@@ -48,7 +48,7 @@ public class HistoriaActivity extends AppCompatActivity {
 
         //Descripción
         TextView textDes = (TextView) findViewById(R.id.textViewDescripcionHistoria);
-        textDes.setText(historia.getDescripcion_historia().replaceAll("salto",System.getProperty("line.separator")+System.getProperty("line.separator")));
+        textDes.setText(historia.getDescripcion_historia().replaceAll("#",System.getProperty("line.separator")+System.getProperty("line.separator")));
         textDes.setMovementMethod(new ScrollingMovementMethod());
 
         //Boton
@@ -57,6 +57,7 @@ public class HistoriaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HistoriaActivity.this, NavigationDrawerActivity.class);
+                intent.putExtra("Historia", historia);
                 startActivityForResult(intent, 0);
             }
         });

@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -122,6 +123,8 @@ public class ListaHistoriasActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Historia> call, Response<Historia> response) {
                 Toast.makeText(getApplicationContext(), "ID "+response.body().getDescripcion_historia(), Toast.LENGTH_SHORT).show();
+                Log.d("RespuestaRegistro", "hola");
+                Log.d("miraraqui", response.body().toString());
                 Intent intent = new Intent(ListaHistoriasActivity.this, HistoriaActivity.class);
                 intent.putExtra("Historia", response.body());
                 startActivityForResult(intent, 0);

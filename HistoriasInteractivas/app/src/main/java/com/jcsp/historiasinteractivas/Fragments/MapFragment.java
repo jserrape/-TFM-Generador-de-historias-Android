@@ -13,11 +13,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,12 +32,12 @@ import com.jcsp.historiasinteractivas.R;
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    private NavigationDrawerActivity nd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-
+        nd = (NavigationDrawerActivity) getActivity();
         getMapAsync(this);
 
         return rootView;
@@ -54,10 +51,10 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             return;
         }
         mMap.setMyLocationEnabled(true);
-        configuracionMapa();
+        configuracionPreferenciasMapa();
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(Double.parseDouble(nd.getHistoria().getLatitud_historia()), Double.parseDouble(nd.getHistoria().getLongitud_historia()));
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
@@ -97,7 +94,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         super.onDestroy();
     }
 
-    private void configuracionMapa(){
+    private void configuracionPreferenciasMapa(){
         //Estilo
         SharedPreferences prefs = this.getActivity().getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         switch (prefs.getString("estilo", "4")) {

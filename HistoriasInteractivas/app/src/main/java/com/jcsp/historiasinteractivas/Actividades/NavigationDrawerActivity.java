@@ -36,6 +36,7 @@ import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.Fragments.MisionesFragment;
 import com.jcsp.historiasinteractivas.Fragments.PerfilFragment;
 import com.jcsp.historiasinteractivas.R;
+import com.jcsp.historiasinteractivas.Util.Historia;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
@@ -44,12 +45,16 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private TextView nav_user;
     private TextView nav_mail;
 
+    private Historia historia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        historia = (Historia) getIntent().getSerializableExtra("Historia");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -139,5 +144,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     }
 
-    public void cambiarFragment(){}
+    public Historia getHistoria() {
+        return historia;
+    }
 }
