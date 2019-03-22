@@ -9,8 +9,12 @@
 
 package com.jcsp.historiasinteractivas.Actividades;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -26,6 +30,7 @@ import com.jcsp.historiasinteractivas.Util.Historia;
 public class HistoriaActivity extends AppCompatActivity {
 
     private Historia historia;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +60,18 @@ public class HistoriaActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+
+        soliciarPermisoLocalizacion();
+    }
+
+    private void soliciarPermisoLocalizacion(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Explicamos porque necesitamos el permiso
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            } else {
+                // El usuario no necesitas explicación, puedes solicitar el permiso:
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+            }
+        }
     }
 }
