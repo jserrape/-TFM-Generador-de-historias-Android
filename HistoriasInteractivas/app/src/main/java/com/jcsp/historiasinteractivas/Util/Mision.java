@@ -16,8 +16,8 @@ public class Mision implements Serializable {
     private int id_historia;
     private String nombre_mision;
     private String icono_mision;
-    private String latitud_mision;
-    private String longitud_mision;
+    private Double latitud_mision;
+    private Double longitud_mision;
     private String tipo_localizacion;
     private String codigo_localizacion;
     private String tipo_prueba;
@@ -61,19 +61,19 @@ public class Mision implements Serializable {
         this.icono_mision = icono_mision;
     }
 
-    public String getLatitud_mision() {
+    public Double getLatitud_mision() {
         return latitud_mision;
     }
 
-    public void setLatitud_mision(String latitud_mision) {
+    public void setLatitud_mision(Double latitud_mision) {
         this.latitud_mision = latitud_mision;
     }
 
-    public String getLongitud_mision() {
+    public Double getLongitud_mision() {
         return longitud_mision;
     }
 
-    public void setLongitud_mision(String longitud_mision) {
+    public void setLongitud_mision(Double longitud_mision) {
         this.longitud_mision = longitud_mision;
     }
 

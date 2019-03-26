@@ -97,7 +97,7 @@ public class AjustesFragment extends Fragment {
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.estilos_array, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_estilo.setAdapter(adapter2);
-        spinner_estilo.setSelection(Integer.parseInt(Objects.requireNonNull(prefs.getString("estilo", "4"))));
+        spinner_estilo.setSelection(Integer.parseInt(Objects.requireNonNull(prefs.getString("estilo", "0"))));
         spinner_estilo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {

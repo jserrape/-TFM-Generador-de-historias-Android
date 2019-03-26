@@ -13,32 +13,43 @@ import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
 import com.jcsp.historiasinteractivas.R;
+import com.jcsp.historiasinteractivas.Util.Historia;
+
+import static android.graphics.BitmapFactory.decodeByteArray;
 
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private NavigationDrawerActivity nd;
+    private Historia historia;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        nd = (NavigationDrawerActivity) getActivity();
+        this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
         getMapAsync(this);
 
         return rootView;
@@ -54,6 +65,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         mMap.setMyLocationEnabled(true);
         configuracionPreferenciasMapa();
         cargarConfiguracionCamara();
+        insertarMarcas();
     }
 
     @Override
@@ -130,8 +142,34 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
     private void cargarConfiguracionCamara(){
         //Coloco la camara en su sitio y hago zoom
-        LatLng center = new LatLng(nd.getHistoria().getLatitud_historia(), nd.getHistoria().getLongitud_historia());
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(Integer.parseInt(nd.getHistoria().getZoom_historia())).build();
+        LatLng center = new LatLng(historia.getLatitud_historia(), historia.getLongitud_historia());
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(historia.getZoom_historia()).build();
         this.mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
+
+    private void insertarMarcas(){
+        for(int i=0;i < historia.getMisiones().size();i++){
+            byte[] imageAsBytes = Base64.decode(historia.getMisiones().get(i).getIcono_mision().getBytes(), Base64.DEFAULT);
+
+            int height = 110;
+            int width = 110;
+            Bitmap smallMarker = Bitmap.createScaledBitmap(decodeByteArray(imageAsBytes, 0, imageAsBytes.length), width, height, false);
+            Marker marker =mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(historia.getMisiones().get(i).getLatitud_mision(), historia.getMisiones().get(i).getLongitud_mision()))
+                    .title(historia.getMisiones().get(i).getNombre_mision()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
+            );
+
+            marker.setTag(i);
+        }
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                int position = (int)(marker.getTag());
+                Toast.makeText(getContext(), "Hola "+position, Toast.LENGTH_SHORT).show();
+                //Using position get Value from arraylist
+                return false;
+            }
+        });
     }
 }

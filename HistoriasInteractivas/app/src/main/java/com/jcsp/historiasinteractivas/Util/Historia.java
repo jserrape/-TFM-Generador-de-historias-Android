@@ -21,7 +21,7 @@ public class Historia implements Serializable {
     private String imagen_historia;
     private Double latitud_historia;
     private Double longitud_historia;
-    private String zoom;
+    private int zoom;
     private String descripcion_historia;
     private List<Mision> misiones = new ArrayList<Mision>();
 
@@ -81,19 +81,19 @@ public class Historia implements Serializable {
         this.longitud_historia = longitud_historia;
     }
 
-    public String getZoom_historia() {
+    public int getZoom_historia() {
         return zoom;
     }
 
-    public void setZoom_historia(String zoom_historia) {
+    public void setZoom_historia(int zoom_historia) {
         this.zoom = zoom_historia;
     }
 
-    public String getZoom() {
+    public int getZoom() {
         return zoom;
     }
 
-    public void setZoom(String zoom) {
+    public void setZoom(int zoom) {
         this.zoom = zoom;
     }
 
