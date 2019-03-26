@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
+import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.Historia;
 
@@ -167,7 +168,9 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             public boolean onMarkerClick(Marker marker) {
                 int position = (int)(marker.getTag());
                 Toast.makeText(getContext(), "Hola "+position, Toast.LENGTH_SHORT).show();
-                //Using position get Value from arraylist
+
+                new PresentacionMisionDialogo(getContext(),historia.getMisiones().get((int)(marker.getTag())));
+
                 return false;
             }
         });

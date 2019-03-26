@@ -4,7 +4,7 @@
 
     <!--- Varios -->
     <string name="cargando">Cargando...</string>
-    <string name="ejemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <string name="ejemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.#Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
 
     <!--- Errores -->
     <string name="error_conexion">Se ha producido un error en la conexión</string>
@@ -73,6 +73,9 @@
         <item>Retro</item>
         <item>Satélite</item>
     </string-array>
+
+    <!--- Dialogo presentacion -->
+    <string name="detectar">Detectar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
