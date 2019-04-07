@@ -35,6 +35,8 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
+import com.jcsp.historiasinteractivas.Dialogos.EscaneoQRDialogo;
+import com.jcsp.historiasinteractivas.Dialogos.FeliciacionUbicacionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.Historia;
@@ -46,6 +48,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private GoogleMap mMap;
     private NavigationDrawerActivity nd;
     private Historia historia;
+    private int nMision;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        nMision = 0;
 
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -166,13 +170,25 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                int position = (int)(marker.getTag());
-                Toast.makeText(getContext(), "Hola "+position, Toast.LENGTH_SHORT).show();
-
-                new PresentacionMisionDialogo(getContext(),historia.getMisiones().get((int)(marker.getTag())));
-
+                nMision = (int)(marker.getTag());
+                iniciarDialogo(1);
                 return false;
             }
         });
+    }
+
+    public void iniciarDialogo(int n){
+        Toast.makeText(getContext(), "Iniciar dialogo", Toast.LENGTH_SHORT).show();
+        switch(n) {
+            case 1:
+                new PresentacionMisionDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                break;
+            case 2:
+                new EscaneoQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                break;
+            case 3:
+                new FeliciacionUbicacionDialogo(getContext(),historia.getMisiones().get(nMision));
+                break;
+        }
     }
 }

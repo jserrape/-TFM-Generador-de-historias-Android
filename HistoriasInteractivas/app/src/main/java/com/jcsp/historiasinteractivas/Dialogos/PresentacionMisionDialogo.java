@@ -9,31 +9,44 @@
 
 package com.jcsp.historiasinteractivas.Dialogos;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.Actividades.CambioPasswordActivity;
 import com.jcsp.historiasinteractivas.Actividades.LoginActivity;
+import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.Mision;
+
+import java.io.IOException;
 
 public class PresentacionMisionDialogo {
 
     private Mision mision;
+    private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
+    private MapFragment map;
 
     @SuppressLint("ResourceAsColor")
-    public PresentacionMisionDialogo(Context contexto, Mision mis){
+    public PresentacionMisionDialogo(final Context contexto, Mision mis, MapFragment mmap){
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
@@ -41,6 +54,7 @@ public class PresentacionMisionDialogo {
         dialogo.setContentView(R.layout.dialogo_presentacion_mision);
 
         this.mision = mis;
+        this.map = mmap;
 
         //Titulo
         TextView titulo = (TextView) dialogo.findViewById(R.id.titulo_mision_presentacion);
@@ -65,8 +79,33 @@ public class PresentacionMisionDialogo {
             }
         });
 
+        //Boton aceptar
         Button btn_escalear = (Button) dialogo.findViewById(R.id.escanear_presenacion);
+        btn_escalear.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if(mision.getTipo_localizacion().equals("qr")){
+                    Toast.makeText(dialogo.getContext(), "Ir a qr", Toast.LENGTH_SHORT).show();
+                    map.iniciarDialogo(2);
+                }else{
+                    Toast.makeText(dialogo.getContext(), "Ir a beacon", Toast.LENGTH_SHORT).show();
+                }
+                dialogo.dismiss();
+            }
+        });
 
         dialogo.show();
+
+        soliciarPermisoCamara(contexto);
+    }
+
+    private void soliciarPermisoCamara(Context contexto){
+        if (ContextCompat.checkSelfPermission(contexto, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Explicamos porque necesitamos el permiso
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) contexto, Manifest.permission.CAMERA)) {
+            } else {
+                // El usuario no necesitas explicación, puedes solicitar el permiso:
+                ActivityCompat.requestPermissions((Activity) contexto, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        }
     }
 }

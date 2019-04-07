@@ -77,6 +77,13 @@
     <!--- Dialogo presentacion -->
     <string name="detectar">Detectar</string>
 
+    <!--- Dialogo escanear QR -->
+    <string name="busca">Busca el Código QR de la zona</string>
+
+    <!--- Dialogo felicitacion ubicacion -->
+    <string name="felicitar_ubicacion">¡Felicidades!, estás en la ubicación correcta.\nSuerte con la prueba</string>
+    <string name="comenzar_prueba">Comenzar prueba</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

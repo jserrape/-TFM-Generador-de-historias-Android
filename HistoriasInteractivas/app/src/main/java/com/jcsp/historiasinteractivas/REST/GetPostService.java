@@ -68,4 +68,7 @@ public interface GetPostService {
     Call<Historia> solicitud_datos_historia(@Field("id") String id);
 
 
+    @POST("/prueba")
+    @FormUrlEncoded
+    Call<Respuesta> enviar_texto(@Field("texto") String texto);
 }

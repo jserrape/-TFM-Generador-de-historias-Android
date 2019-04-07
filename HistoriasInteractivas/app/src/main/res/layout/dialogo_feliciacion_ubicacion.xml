@@ -35,7 +35,7 @@
                 tools:layout_editor_absoluteY="8dp">
 
                 <TextView
-                    android:id="@+id/titulo_mision_presentacion"
+                    android:id="@+id/titulo_felicitacion_ubicacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -43,51 +43,28 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="TextView"
-                    android:textSize="30dp" />
+                    android:text="@string/felicitar_ubicacion"
+                    android:textSize="20dp" />
 
                 <ImageView
-                    android:id="@+id/imagen_inicial_historia"
-                    android:layout_width="300dp"
+                    android:id="@+id/imagen_felicitacion_ubicacion"
+                    android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_below="@+id/titulo_mision_presentacion"
+                    android:layout_below="@+id/titulo_felicitacion_ubicacion"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    app:srcCompat="@drawable/com_facebook_button_icon_blue" />
+                    app:srcCompat="@drawable/felicitades" />
 
-                <TextView
-                    android:id="@+id/descripcion_inicial"
+                <Button
+                    android:id="@+id/empezar_prueba"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/imagen_inicial_historia"
+                    android:layout_below="@+id/imagen_felicitacion_ubicacion"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
                     android:layout_marginTop="30dp"
-                    android:gravity="center"
-                    android:textSize="18dp"
-                    android:text="TextView" />
-
-                <Button
-                    android:id="@+id/cancelar_presenacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/descripcion_inicial"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="@string/cancelar" />
-
-                <Button
-                    android:id="@+id/escanear_presenacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/descripcion_inicial"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="30dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/detectar" />
+                    android:text="@string/comenzar_prueba" />
 
 
             </RelativeLayout>
