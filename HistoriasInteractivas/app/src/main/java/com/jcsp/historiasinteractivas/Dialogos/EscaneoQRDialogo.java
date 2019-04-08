@@ -142,16 +142,14 @@ public class EscaneoQRDialogo {
                     String txt = "";
                     txt = ((Barcode) barcodes.valueAt(0)).displayValue;
 
-                    //if (txt.equals(mision.getCodigo_localizacion())) {
-                        //map.iniciarDialogo(3);
-                        //dialogo.dismiss();
-
-                    //}
-
-                    map.iniciarDialogo(3);
-                    dialogo.dismiss();
-                    mostrarToast("Escaneado: " + txt);
-
+                    if (txt.equals(mision.getCodigo_localizacion())) {
+                        btn_cancelar.post(new Runnable() {
+                            public void run() {
+                                map.iniciarDialogo(3);
+                                dialogo.dismiss();
+                            }
+                        });
+                    }
 
                     GetPostService mAPIService = ApiUtils.getAPIService();
                     mAPIService.enviar_texto(txt).enqueue(new Callback<Respuesta>() {
