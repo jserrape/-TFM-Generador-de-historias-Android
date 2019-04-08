@@ -142,14 +142,16 @@ public class EscaneoQRDialogo {
                     String txt = "";
                     txt = ((Barcode) barcodes.valueAt(0)).displayValue;
 
-                    if (txt.equals(mision.getCodigo_localizacion())) {
+                    //if (txt.equals(mision.getCodigo_localizacion())) {
                         //map.iniciarDialogo(3);
                         //dialogo.dismiss();
 
-                    }
+                    //}
+
                     map.iniciarDialogo(3);
                     dialogo.dismiss();
                     mostrarToast("Escaneado: " + txt);
+
 
                     GetPostService mAPIService = ApiUtils.getAPIService();
                     mAPIService.enviar_texto(txt).enqueue(new Callback<Respuesta>() {
@@ -162,7 +164,7 @@ public class EscaneoQRDialogo {
                         }
                     });
                     //Cierra el detector de códigos
-                    barcodeDetector.release();
+                    //barcodeDetector.release();
                 }
             }
         };
