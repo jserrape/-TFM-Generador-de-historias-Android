@@ -18,14 +18,15 @@ import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.R;
-import com.jcsp.historiasinteractivas.Util.Mision;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
+import com.jcsp.historiasinteractivas.Util.Permisos;
 
 public class FeliciacionUbicacionDialogo {
 
     private Mision mision;
     private MapFragment map;
 
-    public FeliciacionUbicacionDialogo(final Context contexto, Mision mis, MapFragment mmap){
+    public FeliciacionUbicacionDialogo(final Context contexto, Mision mis, MapFragment mmap) {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
@@ -37,17 +38,21 @@ public class FeliciacionUbicacionDialogo {
 
         //Boton aceptar
         Button btn_escalear = (Button) dialogo.findViewById(R.id.empezar_prueba);
-        btn_escalear.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if(mision.getTipo_prueba().equals("qr")){
+        btn_escalear.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (mision.getTipo_prueba().equals("qr")) {
                     Toast.makeText(dialogo.getContext(), "Ir a qr", Toast.LENGTH_SHORT).show();
                     map.iniciarDialogo(5);
-                }else{
+                } else {
                     Toast.makeText(dialogo.getContext(), "Ir a pregunta", Toast.LENGTH_SHORT).show();
                 }
                 dialogo.dismiss();
             }
         });
+
+        if (mision.getTipo_localizacion().equals("qr")) {
+            (new Permisos()).soliciarPermisoCamara(contexto);
+        }
 
         dialogo.show();
     }

@@ -9,7 +9,7 @@
 
 package com.jcsp.historiasinteractivas.REST;
 
-import com.jcsp.historiasinteractivas.Util.Historia;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
 import java.util.List;
 

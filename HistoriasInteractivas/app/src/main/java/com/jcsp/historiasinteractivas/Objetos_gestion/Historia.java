@@ -7,7 +7,7 @@
  *
  */
 
-package com.jcsp.historiasinteractivas.Util;
+package com.jcsp.historiasinteractivas.Objetos_gestion;
 
 import java.io.Serializable;
 import java.util.ArrayList;

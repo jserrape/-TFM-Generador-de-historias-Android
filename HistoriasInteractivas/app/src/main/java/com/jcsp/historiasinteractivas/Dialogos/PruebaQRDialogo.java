@@ -27,7 +27,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.R;
-import com.jcsp.historiasinteractivas.Util.Mision;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 
 import java.io.IOException;
 

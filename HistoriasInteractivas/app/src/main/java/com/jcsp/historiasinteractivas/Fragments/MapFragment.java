@@ -14,14 +14,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,10 +35,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
 import com.jcsp.historiasinteractivas.Dialogos.EscaneoQRDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.FeliciacionUbicacionDialogo;
+import com.jcsp.historiasinteractivas.Dialogos.PresentacionFinalMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PruebaQRDialogo;
 import com.jcsp.historiasinteractivas.R;
-import com.jcsp.historiasinteractivas.Util.Historia;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
 import static android.graphics.BitmapFactory.decodeByteArray;
 
@@ -202,6 +201,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 break;
             case 7:
                 //Vista final
+                new PresentacionFinalMisionDialogo(getContext(),historia.getMisiones().get(nMision));
                 break;
         }
     }

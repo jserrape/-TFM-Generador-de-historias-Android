@@ -25,9 +25,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.jcsp.historiasinteractivas.Fragments.AjustesFragment;
@@ -36,7 +34,7 @@ import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.Fragments.MisionesFragment;
 import com.jcsp.historiasinteractivas.Fragments.PerfilFragment;
 import com.jcsp.historiasinteractivas.R;
-import com.jcsp.historiasinteractivas.Util.Historia;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {

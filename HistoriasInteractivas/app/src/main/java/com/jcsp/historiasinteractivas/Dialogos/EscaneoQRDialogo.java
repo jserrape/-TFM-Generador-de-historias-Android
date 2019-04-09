@@ -9,15 +9,9 @@
 
 package com.jcsp.historiasinteractivas.Dialogos;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
@@ -25,7 +19,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
-import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -38,7 +31,7 @@ import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 import com.jcsp.historiasinteractivas.REST.Respuesta;
-import com.jcsp.historiasinteractivas.Util.Mision;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 
 import java.io.IOException;
 

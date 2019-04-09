@@ -7,7 +7,7 @@
  *
  */
 
-package com.jcsp.historiasinteractivas.Util;
+package com.jcsp.historiasinteractivas.Objetos_gestion;
 
 public class Usuario {
 

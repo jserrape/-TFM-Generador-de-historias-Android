@@ -13,18 +13,16 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
-import com.jcsp.historiasinteractivas.Util.Historia;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
 import java.util.List;
 
