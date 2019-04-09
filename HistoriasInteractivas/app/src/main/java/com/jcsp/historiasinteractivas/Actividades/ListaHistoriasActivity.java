@@ -122,9 +122,9 @@ public class ListaHistoriasActivity extends AppCompatActivity {
         mAPIService.solicitud_datos_historia(id).enqueue(new Callback<Historia>() {
             @Override
             public void onResponse(Call<Historia> call, Response<Historia> response) {
-                Toast.makeText(getApplicationContext(), "ID "+response.body().getDescripcion_historia(), Toast.LENGTH_SHORT).show();
-                Log.d("RespuestaRegistro", "hola");
-                Log.d("miraraqui", response.body().toString());
+                //Toast.makeText(getApplicationContext(), "ID "+response.body().getDescripcion_historia(), Toast.LENGTH_SHORT).show();
+                //Log.d("RespuestaRegistro", "hola");
+                //Log.d("miraraqui", response.body().toString());
                 Intent intent = new Intent(ListaHistoriasActivity.this, HistoriaActivity.class);
                 intent.putExtra("Historia", response.body());
                 startActivityForResult(intent, 0);

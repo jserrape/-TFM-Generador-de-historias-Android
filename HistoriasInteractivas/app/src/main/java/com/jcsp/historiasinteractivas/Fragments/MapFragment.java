@@ -38,6 +38,7 @@ import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
 import com.jcsp.historiasinteractivas.Dialogos.EscaneoQRDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.FeliciacionUbicacionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
+import com.jcsp.historiasinteractivas.Dialogos.PruebaQRDialogo;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.Historia;
 
@@ -178,7 +179,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     }
 
     public void iniciarDialogo(int n){
-        Toast.makeText(getContext(), "Iniciar dialogo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Iniciar dialogo " + n, Toast.LENGTH_SHORT).show();
         switch(n) {
             case 1:
                 new PresentacionMisionDialogo(getContext(),historia.getMisiones().get(nMision),this);
@@ -187,7 +188,20 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 new EscaneoQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 break;
             case 3:
-                new FeliciacionUbicacionDialogo(getContext(),historia.getMisiones().get(nMision));
+                //Escaneo Beacon
+                break;
+            case 4:
+                new FeliciacionUbicacionDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                break;
+            case 5:
+                //Escaneo QR
+                new PruebaQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                break;
+            case 6:
+                //Hacer pregunta
+                break;
+            case 7:
+                //Vista final
                 break;
         }
     }

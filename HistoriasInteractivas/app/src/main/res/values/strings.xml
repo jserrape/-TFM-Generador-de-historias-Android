@@ -79,6 +79,7 @@
 
     <!--- Dialogo escanear QR -->
     <string name="busca">Busca el Código QR de la zona</string>
+    <string name="busca2">Busca el Código QR de la misión</string>
 
     <!--- Dialogo felicitacion ubicacion -->
     <string name="felicitar_ubicacion">¡Felicidades!, estás en la ubicación correcta.\nSuerte con la prueba</string>

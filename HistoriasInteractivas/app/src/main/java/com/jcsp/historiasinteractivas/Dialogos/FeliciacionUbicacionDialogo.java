@@ -11,16 +11,21 @@ package com.jcsp.historiasinteractivas.Dialogos;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.Mision;
 
 public class FeliciacionUbicacionDialogo {
 
     private Mision mision;
+    private MapFragment map;
 
-    public FeliciacionUbicacionDialogo(final Context contexto, Mision mis){
+    public FeliciacionUbicacionDialogo(final Context contexto, Mision mis, MapFragment mmap){
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
@@ -28,6 +33,21 @@ public class FeliciacionUbicacionDialogo {
         dialogo.setContentView(R.layout.dialogo_feliciacion_ubicacion);
 
         this.mision = mis;
+        this.map = mmap;
+
+        //Boton aceptar
+        Button btn_escalear = (Button) dialogo.findViewById(R.id.empezar_prueba);
+        btn_escalear.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if(mision.getTipo_prueba().equals("qr")){
+                    Toast.makeText(dialogo.getContext(), "Ir a qr", Toast.LENGTH_SHORT).show();
+                    map.iniciarDialogo(5);
+                }else{
+                    Toast.makeText(dialogo.getContext(), "Ir a pregunta", Toast.LENGTH_SHORT).show();
+                }
+                dialogo.dismiss();
+            }
+        });
 
         dialogo.show();
     }
