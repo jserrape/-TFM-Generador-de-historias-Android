@@ -62,8 +62,8 @@ public class PruebaQRDialogo {
         btn_cancelar = (Button) dialogo.findViewById(R.id.button_cancelar_prueba_qr);
         btn_cancelar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //barcodeDetector.release();
-                //map.iniciarDialogo(7);
+                barcodeDetector.release();
+                map.iniciarDialogo(7);
                 dialogo.dismiss();
             }
         });
