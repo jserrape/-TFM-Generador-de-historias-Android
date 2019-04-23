@@ -86,6 +86,9 @@
     <string name="felicitar_ubicacion">¡Felicidades!, estás en la ubicación correcta.\nSuerte con la prueba</string>
     <string name="comenzar_prueba">Comenzar prueba</string>
 
+    <!--- Dialogo pregunta -->
+    <string name="continuar">Continuar</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,6 +12,7 @@ package com.jcsp.historiasinteractivas.Dialogos;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class QuizDialogo {
     private Button btn_cerrar;
 
     private int correcto;
+    private boolean actuar;
 
     @SuppressLint("ResourceAsColor")
     public QuizDialogo(final Context contexto, Mision mis, MapFragment mmap) {
@@ -48,6 +50,7 @@ public class QuizDialogo {
 
         this.mision = mis;
         this.map = mmap;
+        this.actuar = true;
 
 
         //Enunciado
@@ -58,25 +61,33 @@ public class QuizDialogo {
         pr1 = (Button) dialogo.findViewById(R.id.respuesta_1);
         pr1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                comprobarRespuesa();
+                if(actuar) {
+                    comprobarRespuesa(v);
+                }
             }
         });
         pr2 = (Button) dialogo.findViewById(R.id.respuesta_2);
         pr2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                comprobarRespuesa();
+                if(actuar) {
+                    comprobarRespuesa(v);
+                }
             }
         });
         pr3 = (Button) dialogo.findViewById(R.id.respuesta_3);
         pr3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                comprobarRespuesa();
+                if(actuar) {
+                    comprobarRespuesa(v);
+                }
             }
         });
         pr4 = (Button) dialogo.findViewById(R.id.respuesta_4);
         pr4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                comprobarRespuesa();
+                if(actuar) {
+                    comprobarRespuesa(v);
+                }
             }
         });
 
@@ -84,7 +95,13 @@ public class QuizDialogo {
         btn_cerrar = (Button) dialogo.findViewById(R.id.cencelar_pregunta);
         btn_cerrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                dialogo.dismiss();
+                if(!actuar) {
+                    map.iniciarDialogo(7);
+                    dialogo.dismiss();
+                }else{
+                    map.iniciarDialogo(7);
+                    dialogo.dismiss();
+                }
             }
         });
 
@@ -112,8 +129,83 @@ public class QuizDialogo {
         list.remove(0).setText(mision.getPregunta().getRespues_incorrecta_3());
     }
 
-    private void comprobarRespuesa() {
+    private void comprobarRespuesa(View v) {
+        boolean acierto=true;
+        switch (v.getId()) {
+            case R.id.respuesta_1:
+                acierto = comprobarCorrecto(0);
+                break;
+            case R.id.respuesta_2:
+                acierto = comprobarCorrecto(1);
+                break;
+            case R.id.respuesta_3:
+                acierto = comprobarCorrecto(2);
+                break;
+            case R.id.respuesta_4:
+                acierto = comprobarCorrecto(3);
+                break;
+        }
 
+        if(acierto){
+            acertado(v);
+        }else{
+            fallado(v);
+        }
+        actuar = false;
+        btn_cerrar.setText(R.string.continuar);
+    }
+
+    private boolean comprobarCorrecto(int n) {
+        return n == correcto;
+    }
+
+    private void acertado(View v){
+        switch (v.getId()) {
+            case R.id.respuesta_1:
+                pr1.setBackgroundColor(Color.GREEN);
+                break;
+            case R.id.respuesta_2:
+                pr2.setBackgroundColor(Color.GREEN);
+                break;
+            case R.id.respuesta_3:
+                pr3.setBackgroundColor(Color.GREEN);
+                break;
+            case R.id.respuesta_4:
+                pr4.setBackgroundColor(Color.GREEN);
+                break;
+        }
+    }
+
+    private void fallado(View v){
+        switch (correcto) {
+            case 0:
+                pr1.setBackgroundColor(Color.GREEN);
+                break;
+            case 1:
+                pr2.setBackgroundColor(Color.GREEN);
+                break;
+            case 2:
+                pr3.setBackgroundColor(Color.GREEN);
+                break;
+            case 3:
+                pr4.setBackgroundColor(Color.GREEN);
+                break;
+        }
+
+        switch (v.getId()) {
+            case R.id.respuesta_1:
+                pr1.setBackgroundColor(Color.RED);
+                break;
+            case R.id.respuesta_2:
+                pr2.setBackgroundColor(Color.RED);
+                break;
+            case R.id.respuesta_3:
+                pr3.setBackgroundColor(Color.RED);
+                break;
+            case R.id.respuesta_4:
+                pr4.setBackgroundColor(Color.RED);
+                break;
+        }
     }
 
 }
