@@ -22,7 +22,10 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.jcsp.historiasinteractivas.Dialogos.CarouserInicialDialogo;
 import com.jcsp.historiasinteractivas.R;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         //Imagen
         ImageView img= (ImageView) findViewById(R.id.imageViewMain);
         img.setImageResource(R.drawable.logo_app);
+
+
+        new CarouserInicialDialogo(this);
     }
 
     @Override

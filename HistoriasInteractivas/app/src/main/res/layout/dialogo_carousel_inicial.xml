@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by Juan Carlos Serrano Pérez on 23/04/19 22:07
+  ~  * Any question send an email to jcsp0003@red.ujaen.es
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 23/04/19 22:07
+  ~  */
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carousel_view_presenacion"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            app:autoPlay="false"
+            app:fillColor="@color/blanco"
+            app:pageColor="@color/blanco"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="@color/amarillo"
+            app:strokeWidth="1dp"/>
+
+
+        <Button
+            android:id="@+id/button_cerrar_carousel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carousel_view_presenacion"
+            android:layout_centerHorizontal="true"
+            android:text="@string/empezar_juego" />
+
+    </RelativeLayout>
+</RelativeLayout>

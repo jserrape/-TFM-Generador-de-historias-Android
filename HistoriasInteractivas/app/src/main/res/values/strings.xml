@@ -10,6 +10,9 @@
     <!--- Errores -->
     <string name="error_conexion">Se ha producido un error en la conexión</string>
 
+    <!--- Carousel -->
+    <string name="empezar_juego">Empezar</string>
+
     <!--- Main Activity -->
     <string name="cancel_login">Login cancelado</string>
     <string name="error_login">Error en el login</string>

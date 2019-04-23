@@ -57,7 +57,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
 
-        Log.d("prueba", "holamundo");
+
 
         getMapAsync(this);
 

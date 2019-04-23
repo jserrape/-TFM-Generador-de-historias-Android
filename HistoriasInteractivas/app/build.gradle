@@ -25,6 +25,9 @@ dependencies {
 
     //Facebook
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    //Carrusel
+    implementation 'com.synnapps:carouselview:0.1.4'
     
     //REST
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
