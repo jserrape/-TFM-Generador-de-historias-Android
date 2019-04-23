@@ -29,6 +29,16 @@ public class Mision implements Serializable {
     private String resumen;
     private String precedentes;
 
+    private Pregunta pregunta = null;
+
+    public Pregunta getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(Pregunta pregunta) {
+        this.pregunta = pregunta;
+    }
+
     public int getId() {
         return id;
     }
