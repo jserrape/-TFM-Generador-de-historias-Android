@@ -67,20 +67,19 @@ public class FeliciacionUbicacionDialogo {
                                 Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_SHORT).show();
                                 mision.setPregunta(response.body());
 
-                                //TODO Ir al dialogo de la pregunta
+                                map.iniciarDialogo(6);
                             }
 
                             @Override
                             public void onFailure(Call<Pregunta> call, Throwable t) {
                                 Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
-
-                                //TODO Ir al dialogo de la pregunta
                             }
                         });
 
 
                     }else{
                         Toast.makeText(dialogo.getContext(), "NO ES NULL", Toast.LENGTH_SHORT).show();
+                        map.iniciarDialogo(6);
                     }
                 }
                 dialogo.dismiss();

@@ -39,6 +39,7 @@ import com.jcsp.historiasinteractivas.Dialogos.FeliciacionUbicacionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionFinalMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PruebaQRDialogo;
+import com.jcsp.historiasinteractivas.Dialogos.QuizDialogo;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
@@ -201,6 +202,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 new PruebaQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 break;
             case 6:
+                new QuizDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 //Hacer pregunta
                 break;
             case 7:
