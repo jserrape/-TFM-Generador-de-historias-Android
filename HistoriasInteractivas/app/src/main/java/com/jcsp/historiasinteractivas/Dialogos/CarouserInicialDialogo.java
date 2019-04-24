@@ -12,14 +12,19 @@ package com.jcsp.historiasinteractivas.Dialogos;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.R;
 import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
 
 public class CarouserInicialDialogo {
 
@@ -31,22 +36,20 @@ public class CarouserInicialDialogo {
     private CarouselView carousel;
     private int[] imagenes = {R.drawable.default_profile, R.drawable.felicitades, R.drawable.logo_app};
 
-    public CarouserInicialDialogo(Context contexto) {
+    public CarouserInicialDialogo(final Context contexto) {
         dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_carousel_inicial);
 
         this.contexto = contexto;
 
         carousel = (CarouselView) dialogo.findViewById(R.id.carousel_view_presenacion);
         carousel.setPageCount(imagenes.length);
-        carousel.setImageListener(imageListener);
+        carousel.setViewListener(viewListener);
 
         //Boton aceptar
         btn = (Button) dialogo.findViewById(R.id.button_cerrar_carousel);
-        btn.setEnabled(false);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dialogo.dismiss();
@@ -56,14 +59,17 @@ public class CarouserInicialDialogo {
         dialogo.show();
     }
 
-    ImageListener imageListener = new ImageListener() {
+    ViewListener viewListener = new ViewListener() {
+
         @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(imagenes[position]);
-            Log.d("prueba", position+"");
-            if (position == imagenes.length - 1) {
-                btn.setEnabled(true);
-            }
+        public View setViewForPosition(int position) {
+            LayoutInflater inflater = (LayoutInflater) contexto.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            View customView = inflater.inflate(R.layout.custom_view_carouser_presentacion, null);
+
+            //set view attributes here
+
+
+            return customView;
         }
     };
 }
