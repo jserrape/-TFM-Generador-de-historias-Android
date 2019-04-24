@@ -9,7 +9,9 @@
 
 package com.jcsp.historiasinteractivas.Actividades;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,8 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.jcsp.historiasinteractivas.Dialogos.CarouserInicialDialogo;
 import com.jcsp.historiasinteractivas.R;
+
+import java.util.Objects;
 
 import static java.security.AccessController.getContext;
 
@@ -87,8 +91,16 @@ public class MainActivity extends AppCompatActivity {
         ImageView img= (ImageView) findViewById(R.id.imageViewMain);
         img.setImageResource(R.drawable.logo_app);
 
+        //Compruebo si es la primera vez para mostrar el carousel de presentacion
+        SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+        String valor = prefs.getString("primera_vez", "True");
 
-        new CarouserInicialDialogo(this);
+        if(valor == "True") {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("primera_vez", "False");
+            editor.commit();
+            new CarouserInicialDialogo(this);
+        }
     }
 
     @Override

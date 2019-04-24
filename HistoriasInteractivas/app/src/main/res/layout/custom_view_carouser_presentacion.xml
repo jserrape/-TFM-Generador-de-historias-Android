@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Juan Carlos Serrano Pérez on 24/04/19 4:17
   ~  * Any question send an email to jcsp0003@red.ujaen.es
@@ -13,24 +12,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView_carousel_presentacion"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/com_facebook_button_icon_blue"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
-    <TextView
-        android:id="@+id/textView_carouser_presentacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dip"
-        android:layout_centerInParent="true"
-        android:background="#AA000000"
-        android:padding="12dip"
-        android:text="SomeText"
-        android:textColor="#ffffffff" />
+        <TextView
+            android:id="@+id/textView_titulo_carousel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="25dp" />
 
+        <ImageView
+            android:id="@+id/imageView_carousel_presentacion"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_below="@+id/textView_titulo_carousel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/com_facebook_button_icon_blue" />
+
+        <TextView
+            android:id="@+id/textView_texto_carousel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView_carousel_presentacion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
 </RelativeLayout>

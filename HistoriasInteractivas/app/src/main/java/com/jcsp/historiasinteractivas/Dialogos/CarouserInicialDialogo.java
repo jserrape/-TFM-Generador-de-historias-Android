@@ -34,7 +34,7 @@ public class CarouserInicialDialogo {
     private Button btn;
 
     private CarouselView carousel;
-    private int[] imagenes = {R.drawable.default_profile, R.drawable.felicitades, R.drawable.logo_app};
+    private int[] imagenes = {R.drawable.planeta, R.drawable.satelite, R.drawable.camara};
 
     public CarouserInicialDialogo(final Context contexto) {
         dialogo = new Dialog(contexto);
@@ -66,8 +66,27 @@ public class CarouserInicialDialogo {
             LayoutInflater inflater = (LayoutInflater) contexto.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             View customView = inflater.inflate(R.layout.custom_view_carouser_presentacion, null);
 
-            //set view attributes here
+            TextView textView1 = (TextView) customView.findViewById(R.id.textView_titulo_carousel);
+            ImageView imageView = (ImageView) customView.findViewById(R.id.imageView_carousel_presentacion);
+            TextView textView2 = (TextView) customView.findViewById(R.id.textView_texto_carousel);
 
+            switch (position){
+                case 0:
+                    textView1.setText(R.string.bienvenido);
+                    imageView.setImageResource(imagenes[position]);
+                    textView2.setText(R.string.bienvenido2);
+                    break;
+                case 1:
+                    textView1.setText(R.string.ubicacion);
+                    imageView.setImageResource(imagenes[position]);
+                    textView2.setText(R.string.ubicacion2);
+                    break;
+                case 2:
+                    textView1.setText(R.string.camara);
+                    imageView.setImageResource(imagenes[position]);
+                    textView2.setText(R.string.camara2);
+                    break;
+            }
 
             return customView;
         }

@@ -12,6 +12,12 @@
 
     <!--- Carousel -->
     <string name="empezar_juego">Empezar</string>
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="bienvenido2">Empieza a descubrir increibles historias por toda la ciudad mientras la descubres</string>
+    <string name="ubicacion">Ubicación requerida</string>
+    <string name="ubicacion2">Asegúrate de asignar los permisos de posicionamiento y activarlos para poder ubicarte</string>
+    <string name="camara">Camara requerida</string>
+    <string name="camara2">Asegúrate de asignar los permisos para poder utilizar la cámara</string>
 
     <!--- Main Activity -->
     <string name="cancel_login">Login cancelado</string>
