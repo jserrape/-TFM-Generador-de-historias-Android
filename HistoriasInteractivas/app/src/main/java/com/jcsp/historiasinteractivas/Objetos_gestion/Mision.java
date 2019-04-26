@@ -25,7 +25,7 @@ public class Mision implements Serializable {
     private String descripcion_inicial;
     private String imagen_inicial;
     private String descripcion_final;
-    private String imagen_final;
+    private String imagen_final = null;
     private String resumen;
     private String precedentes;
 

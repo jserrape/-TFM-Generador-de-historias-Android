@@ -51,10 +51,11 @@ public class CambioPasswordActivity extends AppCompatActivity {
         email_field.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if(!email_field.getText().toString().trim().isEmpty()){
+                if (!email_field.getText().toString().trim().isEmpty()) {
                     btnCambiar.setEnabled(true);
                 }
             }
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -66,36 +67,40 @@ public class CambioPasswordActivity extends AppCompatActivity {
             }
         });
 
-        btnCambiar.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        btnCambiar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 String mail = email_field.getText().toString().trim();
-                if(!mail.isEmpty()){
-                    GetPostService mAPIService = ApiUtils.getAPIService();
-                    mAPIService.solicitud_reseteo_password(mail).enqueue(new Callback<Respuesta>() {
-
-                        @Override
-                        public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                            Log.d("RespuestaRegistro", response.body().toString());
-                            //TODO Cambiar "act" por una referencia al padre
-                            AlertDialog.Builder dialogo1 = new AlertDialog.Builder(act);
-                            dialogo1.setMessage(R.string.mail_enviado);
-                            dialogo1.setCancelable(false);
-                            dialogo1.setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialogo1, int id) {
-                                    //aceptar();
-                                }
-                            });
-                            dialogo1.show();
-                        }
-
-                        @Override
-                        public void onFailure(Call<Respuesta> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }else{
+                if (!mail.isEmpty()) {
+                    enviarPeticion(mail);
+                } else {
                     Toast.makeText(getApplicationContext(), R.string.mail_invalid, Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+
+    public void enviarPeticion(String mail) {
+        GetPostService mAPIService = ApiUtils.getAPIService();
+        mAPIService.solicitud_reseteo_password(mail).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Log.d("RespuestaRegistro", response.body().toString());
+                //TODO Cambiar "act" por una referencia al padre
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(act);
+                dialogo1.setMessage(R.string.mail_enviado);
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        //aceptar();
+                    }
+                });
+                dialogo1.show();
+            }
+
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
             }
         });
     }

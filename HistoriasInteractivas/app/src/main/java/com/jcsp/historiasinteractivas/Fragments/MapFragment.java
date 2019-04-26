@@ -40,10 +40,18 @@ import com.jcsp.historiasinteractivas.Dialogos.PresentacionFinalMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PruebaQRDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.QuizDialogo;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
+import com.jcsp.historiasinteractivas.REST.ApiUtils;
+import com.jcsp.historiasinteractivas.REST.GetPostService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.graphics.BitmapFactory.decodeByteArray;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback {
 
@@ -176,7 +184,31 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             @Override
             public boolean onMarkerClick(Marker marker) {
                 nMision = (int)(marker.getTag());
-                iniciarDialogo(1);
+                if(historia.getMisiones().get(nMision).getImagen_final()==null){
+                    GetPostService mAPIService = ApiUtils.getAPIService();
+                    mAPIService.solicitud_mision(historia.getMisiones().get(nMision).getId()).enqueue(new Callback<Mision>() {
+                        @Override
+                        public void onResponse(Call<Mision> call, Response<Mision> response) {
+                            historia.getMisiones().get(nMision).setTipo_localizacion(response.body().getTipo_localizacion());
+                            historia.getMisiones().get(nMision).setCodigo_localizacion(response.body().getCodigo_localizacion());
+                            historia.getMisiones().get(nMision).setTipo_prueba(response.body().getTipo_prueba());
+                            historia.getMisiones().get(nMision).setCodigo_prueba(response.body().getCodigo_prueba());
+                            historia.getMisiones().get(nMision).setDescripcion_inicial(response.body().getDescripcion_inicial());
+                            historia.getMisiones().get(nMision).setImagen_inicial(response.body().getImagen_inicial());
+                            historia.getMisiones().get(nMision).setDescripcion_final(response.body().getDescripcion_final());
+                            historia.getMisiones().get(nMision).setImagen_final(response.body().getImagen_final());
+
+                            iniciarDialogo(1);
+                        }
+
+                        @Override
+                        public void onFailure(Call<Mision> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    iniciarDialogo(1);
+                }
                 return false;
             }
         });
@@ -202,8 +234,8 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 new PruebaQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 break;
             case 6:
-                new QuizDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 //Hacer pregunta
+                new QuizDialogo(getContext(),historia.getMisiones().get(nMision),this);
                 break;
             case 7:
                 //Vista final

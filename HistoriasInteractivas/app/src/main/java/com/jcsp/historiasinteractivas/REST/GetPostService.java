@@ -10,6 +10,7 @@
 package com.jcsp.historiasinteractivas.REST;
 
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
+import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Pregunta;
 
 import java.util.List;
@@ -77,6 +78,10 @@ public interface GetPostService {
     @POST("/pregunta_json")
     @FormUrlEncoded
     Call<Pregunta> solicitud_pregunta(@Field("codigo_prueba_mision") String codigo_prueba_mision);
+
+    @POST("/mision_json")
+    @FormUrlEncoded
+    Call<Mision> solicitud_mision(@Field("id") int id);
 
     @POST("/prueba")
     @FormUrlEncoded
