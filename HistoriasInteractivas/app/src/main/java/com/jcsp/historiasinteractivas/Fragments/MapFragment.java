@@ -228,6 +228,11 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         for (int i = 0; i < marks.size(); i++) {
             if ((int) marks.get(i).getTag() == nMision) {
                 marks.get(i).remove();
+                marks.remove(i);
+                if(marks.isEmpty()){
+                    //TODO mostrar algo de que se ha acabado
+                }
+                return;
             }
         }
     }
