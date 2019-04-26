@@ -65,8 +65,6 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
 
-
-
         getMapAsync(this);
 
         return rootView;
@@ -121,7 +119,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         super.onDestroy();
     }
 
-    private void configuracionPreferenciasMapa(){
+    private void configuracionPreferenciasMapa() {
         //Estilo
         SharedPreferences prefs = this.getActivity().getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         switch (prefs.getString("estilo", "0")) {
@@ -158,33 +156,37 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         mMap.getUiSettings().setCompassEnabled(true);
     }
 
-    private void cargarConfiguracionCamara(){
+    private void cargarConfiguracionCamara() {
         //Coloco la camara en su sitio y hago zoom
         LatLng center = new LatLng(historia.getLatitud_historia(), historia.getLongitud_historia());
         CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(historia.getZoom_historia()).build();
         this.mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
-    private void insertarMarcas(){
-        for(int i=0;i < historia.getMisiones().size();i++){
-            byte[] imageAsBytes = Base64.decode(historia.getMisiones().get(i).getIcono_mision().getBytes(), Base64.DEFAULT);
+    private void insertarMarcas() {
+        for (int i = 0; i < historia.getMisiones().size(); i++) {
+            if (historia.getMisiones().get(i).getCompletado().equals("False")) {
+                Log.d("miraraqui", historia.getMisiones().get(i).getCompletado());
+                byte[] imageAsBytes = Base64.decode(historia.getMisiones().get(i).getIcono_mision().getBytes(), Base64.DEFAULT);
 
-            int height = 110;
-            int width = 110;
-            Bitmap smallMarker = Bitmap.createScaledBitmap(decodeByteArray(imageAsBytes, 0, imageAsBytes.length), width, height, false);
-            Marker marker =mMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(historia.getMisiones().get(i).getLatitud_mision(), historia.getMisiones().get(i).getLongitud_mision()))
-                    .title(historia.getMisiones().get(i).getNombre_mision()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
-            );
+                int height = 110;
+                int width = 110;
+                Bitmap smallMarker = Bitmap.createScaledBitmap(decodeByteArray(imageAsBytes, 0, imageAsBytes.length), width, height, false);
 
-            marker.setTag(i);
+                MarkerOptions markOp = new MarkerOptions()
+                        .position(new LatLng(historia.getMisiones().get(i).getLatitud_mision(), historia.getMisiones().get(i).getLongitud_mision()))
+                        .title(historia.getMisiones().get(i).getNombre_mision()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+
+                Marker marker = mMap.addMarker(markOp);
+                marker.setTag(i);
+            }
         }
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                nMision = (int)(marker.getTag());
-                if(historia.getMisiones().get(nMision).getImagen_final()==null){
+                nMision = (int) (marker.getTag());
+                if (historia.getMisiones().get(nMision).getImagen_final() == null) {
                     GetPostService mAPIService = ApiUtils.getAPIService();
                     mAPIService.solicitud_mision(historia.getMisiones().get(nMision).getId()).enqueue(new Callback<Mision>() {
                         @Override
@@ -206,7 +208,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                             Toast.makeText(getApplicationContext(), R.string.error_conexion, Toast.LENGTH_SHORT).show();
                         }
                     });
-                }else{
+                } else {
                     iniciarDialogo(1);
                 }
                 return false;
@@ -214,32 +216,32 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         });
     }
 
-    public void iniciarDialogo(int n){
+    public void iniciarDialogo(int n) {
         Toast.makeText(getContext(), "Iniciar dialogo " + n, Toast.LENGTH_SHORT).show();
-        switch(n) {
+        switch (n) {
             case 1:
-                new PresentacionMisionDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                new PresentacionMisionDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 2:
-                new EscaneoQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                new EscaneoQRDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 3:
                 //Escaneo Beacon
                 break;
             case 4:
-                new FeliciacionUbicacionDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                new FeliciacionUbicacionDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 5:
                 //Escaneo QR
-                new PruebaQRDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                new PruebaQRDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 6:
                 //Hacer pregunta
-                new QuizDialogo(getContext(),historia.getMisiones().get(nMision),this);
+                new QuizDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 7:
                 //Vista final
-                new PresentacionFinalMisionDialogo(getContext(),historia.getMisiones().get(nMision));
+                new PresentacionFinalMisionDialogo(getContext(), historia.getMisiones().get(nMision));
                 break;
         }
     }

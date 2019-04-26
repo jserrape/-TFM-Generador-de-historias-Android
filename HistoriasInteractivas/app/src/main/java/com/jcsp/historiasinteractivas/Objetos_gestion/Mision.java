@@ -28,8 +28,16 @@ public class Mision implements Serializable {
     private String imagen_final = null;
     private String resumen;
     private String precedentes;
-
+    private String completado = "borrar";
     private Pregunta pregunta = null;
+
+    public String getCompletado() {
+        return completado;
+    }
+
+    public void setCompletado(String completado) {
+        this.completado = completado;
+    }
 
     public Pregunta getPregunta() {
         return pregunta;
@@ -173,6 +181,7 @@ public class Mision implements Serializable {
                 "id=" + id +
                 ", id_historia=" + id_historia +
                 ", nombre_mision='" + nombre_mision + '\'' +
+                ", completado='" + completado + '\'' +
                 //", icono_mision='" + icono_mision + '\'' +
                 ", latitud_mision='" + latitud_mision + '\'' +
                 ", longitud_mision='" + longitud_mision + '\'' +

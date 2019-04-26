@@ -67,7 +67,8 @@ public interface GetPostService {
 
     @POST("/historia")
     @FormUrlEncoded
-    Call<Historia> solicitud_datos_historia(@Field("id") String id);
+    Call<Historia> solicitud_datos_historia(@Field("id") String id,
+                                            @Field("email") String email);
 
     @POST("/rest/completar_mision")
     @FormUrlEncoded

@@ -10,9 +10,12 @@
 package com.jcsp.historiasinteractivas.Actividades;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +28,7 @@ import com.jcsp.historiasinteractivas.REST.GetPostService;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,14 +52,14 @@ public class ListaHistoriasActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         progressDialog = new ProgressDialog(this);
         progressDialog.setIcon(R.mipmap.ic_launcher);
-        progressDialog.setMessage(R.string.cargando+"");
+        progressDialog.setMessage(R.string.cargando + "");
         progressDialog.show();
 
         clase = this;
         get_historias();
     }
 
-    private void get_historias(){
+    private void get_historias() {
         GetPostService mAPIService = ApiUtils.getAPIService();
         //Pido las historias al servidor
         mAPIService.getListHistorias().enqueue(new Callback<List<Historia>>() {
@@ -82,9 +86,9 @@ public class ListaHistoriasActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String itemValue = (String) lst.getItemAtPosition(position);
-                        for(int z=0;z<historiasNombres.length;z++){
-                            if(historiasNombres[z]==itemValue){
-                                get_historia(response.body().get(z).getId()+"");
+                        for (int z = 0; z < historiasNombres.length; z++) {
+                            if (historiasNombres[z] == itemValue) {
+                                get_historia(response.body().get(z).getId() + "");
                             }
                         }
                     }
@@ -115,14 +119,22 @@ public class ListaHistoriasActivity extends AppCompatActivity {
         });
     }
 
-    private void get_historia(String id){
+    private void get_historia(String id) {
+        SharedPreferences pref = Objects.requireNonNull(this).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         GetPostService mAPIService = ApiUtils.getAPIService();
-        mAPIService.solicitud_datos_historia(id).enqueue(new Callback<Historia>() {
+        mAPIService.solicitud_datos_historia(id, pref.getString("email", "null")).enqueue(new Callback<Historia>() {
             @Override
             public void onResponse(Call<Historia> call, Response<Historia> response) {
+                //TODO borrar cosas
                 //Toast.makeText(getApplicationContext(), "ID "+response.body().getDescripcion_historia(), Toast.LENGTH_SHORT).show();
                 //Log.d("RespuestaRegistro", "hola");
                 //Log.d("miraraqui", response.body().toString());
+                //Borrar esto
+                Historia hist = response.body();
+                for (int i = 0; i < hist.getMisiones().size(); i++) {
+                    Log.d("miraraqui", i + ": " + hist.getMisiones().get(i).toString());
+                }
+
                 Intent intent = new Intent(ListaHistoriasActivity.this, HistoriaActivity.class);
                 intent.putExtra("Historia", response.body());
                 startActivityForResult(intent, 0);
