@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.Actividades.LoginActivity;
 import com.jcsp.historiasinteractivas.Actividades.RegistroActivity;
+import com.jcsp.historiasinteractivas.Fragments.MapFragment;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
@@ -42,9 +43,10 @@ import retrofit2.Response;
 public class PresentacionFinalMisionDialogo {
 
     private Mision mision;
+    private MapFragment map;
 
     @SuppressLint("ResourceAsColor")
-    public  PresentacionFinalMisionDialogo(final Context contexto, Mision mis){
+    public  PresentacionFinalMisionDialogo(final Context contexto, Mision mis, MapFragment mmap){
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
@@ -52,6 +54,9 @@ public class PresentacionFinalMisionDialogo {
         dialogo.setContentView(R.layout.dialogo_presenacion_final_mision);
 
         this.mision = mis;
+        this.map = mmap;
+
+        this.map.eliminarMark();
 
         //Imagen
         ImageView imgTit = (ImageView) dialogo.findViewById(R.id.imagen_final_historia);

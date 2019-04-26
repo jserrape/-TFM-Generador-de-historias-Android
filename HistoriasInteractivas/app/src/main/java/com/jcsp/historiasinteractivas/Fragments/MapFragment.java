@@ -46,6 +46,9 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,12 +61,16 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private GoogleMap mMap;
     private NavigationDrawerActivity nd;
     private Historia historia;
+
     private int nMision;
+    private List<Marker> marks;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
+
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
+        marks = new ArrayList<Marker>();
 
         getMapAsync(this);
 
@@ -179,6 +186,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
                 Marker marker = mMap.addMarker(markOp);
                 marker.setTag(i);
+                marks.add(marker);
             }
         }
 
@@ -216,6 +224,14 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         });
     }
 
+    public void eliminarMark() {
+        for (int i = 0; i < marks.size(); i++) {
+            if ((int) marks.get(i).getTag() == nMision) {
+                marks.get(i).remove();
+            }
+        }
+    }
+
     public void iniciarDialogo(int n) {
         Toast.makeText(getContext(), "Iniciar dialogo " + n, Toast.LENGTH_SHORT).show();
         switch (n) {
@@ -241,7 +257,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 break;
             case 7:
                 //Vista final
-                new PresentacionFinalMisionDialogo(getContext(), historia.getMisiones().get(nMision));
+                new PresentacionFinalMisionDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
         }
     }
