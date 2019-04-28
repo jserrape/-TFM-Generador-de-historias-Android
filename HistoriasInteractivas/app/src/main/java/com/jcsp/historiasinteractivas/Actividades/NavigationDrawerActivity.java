@@ -59,8 +59,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Fragment fragment=new MapFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,fragment).commit();
+        Fragment fragment = new MapFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main, fragment).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -68,15 +68,15 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         //Inicializo los objetos
         SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-        View hView =  navigationView.getHeaderView(0);
+        View hView = navigationView.getHeaderView(0);
         nav_user = (TextView) hView.findViewById(R.id.text_nombre_nd);
-        nav_user.setText(prefs.getString("nombre","NULL"));
+        nav_user.setText(prefs.getString("nombre", "NULL"));
 
         nav_mail = (TextView) hView.findViewById(R.id.text_email_nd);
-        nav_mail.setText(prefs.getString("email","NULL"));
+        nav_mail.setText(prefs.getString("email", "NULL"));
 
         imagen = (ImageView) hView.findViewById(R.id.imageView_nd);
-        byte[] imageAsBytes = Base64.decode(prefs.getString("imagen","NULL").getBytes(), Base64.DEFAULT);
+        byte[] imageAsBytes = Base64.decode(prefs.getString("imagen", "NULL").getBytes(), Base64.DEFAULT);
         imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imagen.setAdjustViewBounds(true);
     }
@@ -92,30 +92,29 @@ public class NavigationDrawerActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        Fragment fragment=null;
-        boolean fragmentSeleccionado=false;
+        Fragment fragment = null;
+        boolean fragmentSeleccionado = false;
 
         if (id == R.id.nav_mapa) {
-            fragment=new MapFragment();
-            fragmentSeleccionado=true;
+            fragment = new MapFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_perfil) {
-            fragment=new PerfilFragment();
-            fragmentSeleccionado=true;
+            fragment = new PerfilFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_misiones) {
-            fragment=new MisionesFragment();
-            fragmentSeleccionado=true;
+            fragment = new MisionesFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {
-            fragment=new AjustesFragment();
-            fragmentSeleccionado=true;
+            fragment = new AjustesFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_ayuda) {
-            fragment=new AyudaFragment();
-            fragmentSeleccionado=true;
+            fragment = new AyudaFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_cerrar_sesión) {
             SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
@@ -128,8 +127,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
             finish();
         }
 
-        if (fragmentSeleccionado==true){
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+        if (fragmentSeleccionado == true) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

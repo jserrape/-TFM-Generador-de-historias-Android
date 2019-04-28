@@ -11,37 +11,41 @@ package com.jcsp.historiasinteractivas.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.jcsp.historiasinteractivas.R;
+
+import java.util.Objects;
 
 
 public class PerfilFragment extends Fragment {
 
+    private OnFragmentInteractionListener mListener;
+
     //Elementos de gestion la actividad
     private View vista;
+    private ImageView imagen;
+    private EditText email;
+    private EditText nombre;
+
+    //Botones de la actividad
 
     //Preferencias
     private SharedPreferences prefs;
 
-    private OnFragmentInteractionListener mListener;
-
     public PerfilFragment() {
     }
 
-
-    public static PerfilFragment newInstance(String param1, String param2) {
-        PerfilFragment fragment = new PerfilFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,9 +54,28 @@ public class PerfilFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
-    }
+        //Obtengo los datos de la vista y defino las preferencias
+        vista = inflater.inflate(R.layout.fragment_perfil, container, false);
+        prefs = Objects.requireNonNull(this.getActivity()).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
 
+        //Imagen
+        imagen = (ImageView) vista.findViewById(R.id.perfil_image);
+        byte[] imageAsBytes = Base64.decode(prefs.getString("imagen", "NULL").getBytes(), Base64.DEFAULT);
+        imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+        imagen.setAdjustViewBounds(true);
+
+        //Email
+        email = (EditText) vista.findViewById(R.id.perfil_email);
+        email.setText(prefs.getString("email", "NULL"));
+        email.setEnabled(false);
+
+        //Nombre
+        nombre = (EditText) vista.findViewById(R.id.perfil_nombre);
+        nombre.setText(prefs.getString("nombre", "NULL"));
+        nombre.setEnabled(false);
+
+        return vista;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -69,7 +92,6 @@ public class PerfilFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
     }
