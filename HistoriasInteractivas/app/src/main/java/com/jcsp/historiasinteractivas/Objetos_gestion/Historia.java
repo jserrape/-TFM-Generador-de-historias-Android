@@ -23,7 +23,7 @@ public class Historia implements Serializable {
     private Double longitud_historia;
     private int zoom;
     private String descripcion_historia;
-    private List<Mision> misiones = new ArrayList<Mision>();
+    private List<Mision> misiones = new ArrayList<>();
 
     public int getId() {
         return id;

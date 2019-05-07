@@ -36,6 +36,8 @@ import com.jcsp.historiasinteractivas.Fragments.PerfilFragment;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 
+import java.io.Serializable;
+
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
 
@@ -108,6 +110,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_misiones) {
             fragment = new MisionesFragment();
+            Bundle bundl = new Bundle();
+            bundl.putSerializable("elist", (Serializable) historia.getMisiones());
+            fragment.setArguments(bundl);
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {
             fragment = new AjustesFragment();
