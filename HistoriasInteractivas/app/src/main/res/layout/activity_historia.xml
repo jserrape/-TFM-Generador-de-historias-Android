@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Juan Carlos Serrano Pérez on 18/03/19 9:16
   ~  * Any question send an email to jcsp0003@red.ujaen.es
@@ -34,10 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewDescripcionHistoria"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="60dp"
         android:adjustViewBounds="true" />
 
     <TextView
@@ -46,19 +45,19 @@
         android:layout_height="240dp"
         android:layout_above="@+id/buttonEmpezarHistoria"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginRight="80dp"
-        android:textSize="17dp"
         android:layout_gravity="center_vertical|end"
-        android:text="@string/ejemplo" />
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/ejemplo"
+        android:textSize="17dp" />
 
     <Button
         android:id="@+id/buttonEmpezarHistoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="46dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
         android:text="@string/empezar" />
 
 </RelativeLayout>

@@ -52,7 +52,7 @@ public class MisionesFragment extends Fragment {
 
         listView = (ListView) vista.findViewById(R.id.lista_fragment_misiones);
 
-        AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions);
+        AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions, getContext());
         listView.setAdapter(adaptador);
 
         return vista;

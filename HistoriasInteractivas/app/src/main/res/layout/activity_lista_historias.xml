@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Juan Carlos Serrano Pérez on 18/03/19 9:16
   ~  * Any question send an email to jcsp0003@red.ujaen.es
@@ -16,10 +15,10 @@
     tools:context=".Actividades.ListaHistoriasActivity">
 
     <SearchView
+        android:id="@+id/searchFilter"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/email"
-        android:id="@+id/searchFilter"/>
+        android:hint="@string/email" />
 
     <ListView
         android:id="@+id/listahistorias"

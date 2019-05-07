@@ -9,8 +9,11 @@
 
 package com.jcsp.historiasinteractivas.Util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +31,12 @@ public class AdaptadorListaPersonalizada extends BaseAdapter {
 
     protected Activity activity;
     protected List<Mision> items;
+    private Context contexto;
 
-    public AdaptadorListaPersonalizada(Activity actividad, List<Mision> items) {
+    public AdaptadorListaPersonalizada(Activity actividad, List<Mision> items, Context con) {
         this.activity = actividad;
         this.items = items;
+        this.contexto = con;
     }
 
     @Override
@@ -49,11 +54,12 @@ public class AdaptadorListaPersonalizada extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.custom_list_misiones, null);
         }
@@ -68,8 +74,13 @@ public class AdaptadorListaPersonalizada extends BaseAdapter {
 
         //Enviamos informacion a la vista apartir de la informacion que contenga la clase:
         titulo.setText(mis.getNombre_mision());
-        descripcion.setText(mis.getNombre_mision());
+        if (mis.getNombre_mision() != null) {
+            String[] parts = mis.getCompletado().split(" ");
+            descripcion.setText(contexto.getString(R.string.compleado) + " " + parts[0]);
+        }
         //imagen.setImageResource(mis.getImagen());
+        byte[] imageAsBytes = Base64.decode(mis.getIcono_mision(), Base64.DEFAULT);
+        imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
 
         return v;
     }

@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
-  ~  * Created by Juan Carlos Serrano Pérez on 6/05/19 18:58
+  ~  * Created by Juan Carlos Serrano Pérez on 7/05/19 11:20
   ~  * Any question send an email to jcsp0003@red.ujaen.es
   ~  * Copyright (c) 2019 . All rights reserved.
-  ~  * Last modified 6/05/19 18:58
+  ~  * Last modified 6/05/19 19:14
   ~  */
   -->
 
@@ -14,32 +13,42 @@
     android:layout_height="match_parent"
     android:padding="7dp">
 
-    <ImageView
-        android:id="@+id/imgWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/account" />
-
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="7dp">
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:rowCount="7">
 
-        <TextView
-            android:id="@+id/tvTitulo"
+        <ImageView
+            android:id="@+id/imgWeb"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/account" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de la misión"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="7dp">
 
-        <TextView
-            android:id="@+id/tvDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Completado: 05/12/2019"
-            android:textSize="15sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la misión"
+                android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tvDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Completado: 05/12/2019"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </GridLayout>
 </LinearLayout>

@@ -59,18 +59,18 @@ public class LoginActivity extends AppCompatActivity {
         passOlvidada = (TextView) findViewById(R.id.olvidarpass);
         btnAcceso = (Button) findViewById(R.id.botonlogin);
 
-        passOlvidada.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        passOlvidada.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, CambioPasswordActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
 
-        btnAcceso.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if(email.getText().toString().trim().isEmpty() || pass.getText().toString().trim().isEmpty()){
+        btnAcceso.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (email.getText().toString().trim().isEmpty() || pass.getText().toString().trim().isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.rellenar, Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     String mail = email.getText().toString();
                     String password = cifrarPassword(pass.getText().toString());
 
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                             Log.d("RespuestaRegistro", response.body().toString());
-                            if(Integer.parseInt(response.body().getStatus())==200){
+                            if (Integer.parseInt(response.body().getStatus()) == 200) {
 
                                 Log.d("DatosUsuario", response.body().getResulado());
                                 JSONObject user = null;
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivityForResult(intent, 0);
                                 finish();
 
-                            }else{
+                            } else {
                                 Toast.makeText(getApplicationContext(), "Inicio mal", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -120,12 +120,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Imagen
-        ImageView img= (ImageView) findViewById(R.id.imageViewLogin);
+        ImageView img = (ImageView) findViewById(R.id.imageViewLogin);
         img.setImageResource(R.drawable.imagen_login);
     }
 
 
-    private String cifrarPassword(String pass){
+    private String cifrarPassword(String pass) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-1");

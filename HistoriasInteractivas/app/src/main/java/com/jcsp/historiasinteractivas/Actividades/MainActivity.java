@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Imagen
-        ImageView img= (ImageView) findViewById(R.id.imageViewMain);
+        ImageView img = (ImageView) findViewById(R.id.imageViewMain);
         img.setImageResource(R.drawable.logo_app);
 
         //Compruebo si es la primera vez para mostrar el carousel de presentacion
         SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         String valor = prefs.getString("primera_vez", "True");
 
-        if(valor == "True") {
+        if (valor == "True") {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("primera_vez", "False");
             editor.commit();

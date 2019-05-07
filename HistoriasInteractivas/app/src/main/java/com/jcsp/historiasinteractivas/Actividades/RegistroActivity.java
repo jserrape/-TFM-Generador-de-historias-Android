@@ -125,7 +125,7 @@ public class RegistroActivity extends AppCompatActivity {
         }
     }
 
-    private String cifrarPassword(String pass){
+    private String cifrarPassword(String pass) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-1");

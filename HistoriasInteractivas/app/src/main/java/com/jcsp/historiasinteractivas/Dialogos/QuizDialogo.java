@@ -61,7 +61,7 @@ public class QuizDialogo {
         pr1 = (Button) dialogo.findViewById(R.id.respuesta_1);
         pr1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(actuar) {
+                if (actuar) {
                     comprobarRespuesa(v);
                 }
             }
@@ -69,7 +69,7 @@ public class QuizDialogo {
         pr2 = (Button) dialogo.findViewById(R.id.respuesta_2);
         pr2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(actuar) {
+                if (actuar) {
                     comprobarRespuesa(v);
                 }
             }
@@ -77,7 +77,7 @@ public class QuizDialogo {
         pr3 = (Button) dialogo.findViewById(R.id.respuesta_3);
         pr3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(actuar) {
+                if (actuar) {
                     comprobarRespuesa(v);
                 }
             }
@@ -85,7 +85,7 @@ public class QuizDialogo {
         pr4 = (Button) dialogo.findViewById(R.id.respuesta_4);
         pr4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(actuar) {
+                if (actuar) {
                     comprobarRespuesa(v);
                 }
             }
@@ -95,10 +95,10 @@ public class QuizDialogo {
         btn_cerrar = (Button) dialogo.findViewById(R.id.cencelar_pregunta);
         btn_cerrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!actuar) {
+                if (!actuar) {
                     map.iniciarDialogo(7);
                     dialogo.dismiss();
-                }else{
+                } else {
                     map.iniciarDialogo(7);
                     dialogo.dismiss();
                 }
@@ -130,7 +130,7 @@ public class QuizDialogo {
     }
 
     private void comprobarRespuesa(View v) {
-        boolean acierto=true;
+        boolean acierto = true;
         switch (v.getId()) {
             case R.id.respuesta_1:
                 acierto = comprobarCorrecto(0);
@@ -146,9 +146,9 @@ public class QuizDialogo {
                 break;
         }
 
-        if(acierto){
+        if (acierto) {
             acertado(v);
-        }else{
+        } else {
             fallado(v);
         }
         actuar = false;
@@ -159,7 +159,7 @@ public class QuizDialogo {
         return n == correcto;
     }
 
-    private void acertado(View v){
+    private void acertado(View v) {
         switch (v.getId()) {
             case R.id.respuesta_1:
                 pr1.setBackgroundColor(Color.GREEN);
@@ -176,7 +176,7 @@ public class QuizDialogo {
         }
     }
 
-    private void fallado(View v){
+    private void fallado(View v) {
         switch (correcto) {
             case 0:
                 pr1.setBackgroundColor(Color.GREEN);

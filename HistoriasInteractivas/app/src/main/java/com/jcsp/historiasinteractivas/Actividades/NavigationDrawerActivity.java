@@ -143,7 +143,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 
     public Historia getHistoria() {

@@ -34,6 +34,7 @@ import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 import com.jcsp.historiasinteractivas.REST.Respuesta;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -46,7 +47,7 @@ public class PresentacionFinalMisionDialogo {
     private MapFragment map;
 
     @SuppressLint("ResourceAsColor")
-    public  PresentacionFinalMisionDialogo(final Context contexto, Mision mis, MapFragment mmap){
+    public PresentacionFinalMisionDialogo(final Context contexto, Mision mis, MapFragment mmap) {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
@@ -81,7 +82,7 @@ public class PresentacionFinalMisionDialogo {
 
         //Indico al servidor que he completado la misión
         SharedPreferences pref = Objects.requireNonNull(contexto).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-        Toast.makeText(contexto, "Email: " + pref.getString("email", "null") , Toast.LENGTH_SHORT).show();
+        Toast.makeText(contexto, "Email: " + pref.getString("email", "null"), Toast.LENGTH_SHORT).show();
 
         GetPostService mAPIService = ApiUtils.getAPIService();
         mAPIService.post_completar_mision(pref.getString("email", "null"), mision.getId_historia(), mision.getId()).enqueue(new Callback<Respuesta>() {

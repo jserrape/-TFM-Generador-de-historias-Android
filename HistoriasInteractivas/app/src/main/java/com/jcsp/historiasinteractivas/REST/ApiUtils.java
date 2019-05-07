@@ -11,7 +11,8 @@ package com.jcsp.historiasinteractivas.REST;
 
 public class ApiUtils {
 
-    private ApiUtils() {}
+    private ApiUtils() {
+    }
 
     public static final String BASE_URL = "https://tfm-historias.herokuapp.com/";
 

@@ -47,21 +47,21 @@ public class PruebaQRDialogo {
 
     private Detector.Processor prod = null;
 
-    public PruebaQRDialogo(Context contexto, Mision mis, MapFragment mmap){
+    public PruebaQRDialogo(Context contexto, Mision mis, MapFragment mmap) {
         dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
         //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_prueba_qr);
 
-        this.contexto=contexto;
+        this.contexto = contexto;
         this.mision = mis;
         this.map = mmap;
 
         cameraView = (SurfaceView) dialogo.findViewById(R.id.prueba_camera_view);
         btn_cancelar = (Button) dialogo.findViewById(R.id.button_cancelar_prueba_qr);
-        btn_cancelar.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 barcodeDetector.release();
                 map.iniciarDialogo(7);
                 dialogo.dismiss();
@@ -86,7 +86,7 @@ public class PruebaQRDialogo {
             public void surfaceCreated(SurfaceHolder holder) {
 
                 //Verifica si el usuario ha dado permiso para la camara
-                if (ContextCompat.checkSelfPermission(contexto,  android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(contexto, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                     try {
                         cameraSource.start(cameraView.getHolder());
                     } catch (IOException ie) {
@@ -96,7 +96,8 @@ public class PruebaQRDialogo {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { }
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            }
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
@@ -130,12 +131,10 @@ public class PruebaQRDialogo {
 
                     /**GetPostService mAPIService = ApiUtils.getAPIService();
                      mAPIService.enviar_texto(txt).enqueue(new Callback<Respuesta>() {
-                    @Override
-                    public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                    @Override public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                     }
 
-                    @Override
-                    public void onFailure(Call<Respuesta> call, Throwable t) {
+                    @Override public void onFailure(Call<Respuesta> call, Throwable t) {
                     }
                     });*/
                     //Cierra el detector de códigos
