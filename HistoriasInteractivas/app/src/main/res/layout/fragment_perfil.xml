@@ -61,7 +61,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rev_main"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -69,11 +69,11 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="17dp"
+                    android:textSize="23dp"
                     android:text="@string/modificar_pass" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/editText_perfil_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -81,7 +81,7 @@
                     android:hint="@string/pass_actu"/>
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/editText_perfil_nueva"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -90,7 +90,7 @@
                     android:hint="@string/nueva_pass"/>
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/editText_perfil_repetir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -99,7 +99,7 @@
                     android:hint="@string/repetir_pass"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_perfil_cambio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -111,7 +111,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_perfil_eliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rev_main2"

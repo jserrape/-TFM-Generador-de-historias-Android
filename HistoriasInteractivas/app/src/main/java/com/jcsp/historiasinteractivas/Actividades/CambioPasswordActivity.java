@@ -90,7 +90,7 @@ public class CambioPasswordActivity extends AppCompatActivity {
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(act);
                 dialogo1.setMessage(R.string.mail_enviado);
                 dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
+                dialogo1.setPositiveButton(R.string.confirmar2, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                         //aceptar();
                     }

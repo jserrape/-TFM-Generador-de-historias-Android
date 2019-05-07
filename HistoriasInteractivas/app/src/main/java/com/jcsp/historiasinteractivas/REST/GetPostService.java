@@ -16,6 +16,7 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Pregunta;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -25,9 +26,10 @@ public interface GetPostService {
 
     /**
      * Crear usuario
-     * @param email Email del usuario
-     * @param nombre Nombre de usuario
-     * @param password Contraseña del usuario
+     *
+     * @param email      Email del usuario
+     * @param nombre     Nombre de usuario
+     * @param password   Contraseña del usuario
      * @param imagen_usu Imagen de perfil del usuario
      * @return Respuesta del servidor
      */
@@ -40,7 +42,8 @@ public interface GetPostService {
 
     /**
      * Funcion para iniciar sesión
-     * @param email Email del usuario
+     *
+     * @param email    Email del usuario
      * @param password Contraseña del usuario
      * @return Respuesta del servidor
      */
@@ -51,6 +54,7 @@ public interface GetPostService {
 
     /**
      * Función para solicitar al servidor cambiar la contraseña
+     *
      * @param email Email del usuario
      * @return Respuesta del servidor
      */
@@ -60,6 +64,7 @@ public interface GetPostService {
 
     /**
      * Obtiene una lista básica de las historias (id, nombre_historia)
+     *
      * @return Lista de las historias
      */
     @GET("/historia/list")
@@ -83,6 +88,15 @@ public interface GetPostService {
     @POST("/mision_json")
     @FormUrlEncoded
     Call<Mision> solicitud_mision(@Field("id") int id);
+
+    @POST("/rest/cambio_password")
+    @FormUrlEncoded
+    Call<Respuesta> cambiar_password(@Field("email") String email,
+                                     @Field("pass") String pass);
+
+    @POST("/rest/eliminar_usuario")
+    @FormUrlEncoded
+    Call<Respuesta> eliminar_usuario(@Field("email") String email);
 
     @POST("/prueba")
     @FormUrlEncoded
