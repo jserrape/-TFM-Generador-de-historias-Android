@@ -17,8 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Mision;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Util.AdaptadorListaPersonalizada;
@@ -26,14 +28,16 @@ import com.jcsp.historiasinteractivas.Util.AdaptadorListaPersonalizada;
 import java.util.List;
 
 
-public class MisionesFragment extends Fragment {
+public class ListaMisionesFragment extends Fragment {
+
+    private NavigationDrawerActivity nd;
 
     private List<Mision> misions;
     private View vista;
 
     private ListView listView;
 
-    public MisionesFragment() {
+    public ListaMisionesFragment() {
     }
 
 
@@ -48,12 +52,19 @@ public class MisionesFragment extends Fragment {
 
         if (getArguments() != null) {
             misions = (List<Mision>) getArguments().getSerializable("elist");
+            nd = (NavigationDrawerActivity) getArguments().getSerializable("nd");
         }
 
         listView = (ListView) vista.findViewById(R.id.lista_fragment_misiones);
 
         AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions, getContext());
         listView.setAdapter(adaptador);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                nd.irAMision(position);
+            }
+        });
 
         return vista;
     }

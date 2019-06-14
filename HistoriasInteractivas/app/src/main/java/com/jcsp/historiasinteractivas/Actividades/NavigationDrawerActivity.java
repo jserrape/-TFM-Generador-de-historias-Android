@@ -31,7 +31,8 @@ import android.widget.TextView;
 import com.jcsp.historiasinteractivas.Fragments.AjustesFragment;
 import com.jcsp.historiasinteractivas.Fragments.AyudaFragment;
 import com.jcsp.historiasinteractivas.Fragments.MapFragment;
-import com.jcsp.historiasinteractivas.Fragments.MisionesFragment;
+import com.jcsp.historiasinteractivas.Fragments.ListaMisionesFragment;
+import com.jcsp.historiasinteractivas.Fragments.MisionFragment;
 import com.jcsp.historiasinteractivas.Fragments.PerfilFragment;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
@@ -39,7 +40,7 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 import java.io.Serializable;
 
 public class NavigationDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
+        implements Serializable, NavigationView.OnNavigationItemSelectedListener, ListaMisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
 
     private ImageView imagen;
     private TextView nav_user;
@@ -109,9 +110,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragment = new PerfilFragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_misiones) {
-            fragment = new MisionesFragment();
+            fragment = new ListaMisionesFragment();
             Bundle bundl = new Bundle();
             bundl.putSerializable("elist", (Serializable) historia.getMisiones());
+            bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
             fragment.setArguments(bundl);
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {
@@ -143,6 +145,14 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+    }
+
+    public void irAMision(int n){
+        Fragment fragment = new MisionFragment();
+        Bundle bundl = new Bundle();
+        bundl.putSerializable("mision", (Serializable) historia.getMisiones().get(n));
+        fragment.setArguments(bundl);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }
 
     public Historia getHistoria() {

@@ -16,11 +16,9 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
         android:orientation="horizontal"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:rowCount="7">
+        android:paddingBottom="5dp">
 
         <ImageView
             android:id="@+id/imgWeb"
