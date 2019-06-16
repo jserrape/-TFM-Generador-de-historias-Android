@@ -31,7 +31,7 @@ import android.widget.TextView;
 import com.jcsp.historiasinteractivas.Fragments.AjustesFragment;
 import com.jcsp.historiasinteractivas.Fragments.AyudaFragment;
 import com.jcsp.historiasinteractivas.Fragments.MapFragment;
-import com.jcsp.historiasinteractivas.Fragments.ListaMisionesFragment;
+import com.jcsp.historiasinteractivas.Fragments.ListaMisFragment;
 import com.jcsp.historiasinteractivas.Fragments.MisionFragment;
 import com.jcsp.historiasinteractivas.Fragments.PerfilFragment;
 import com.jcsp.historiasinteractivas.R;
@@ -40,7 +40,7 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 import java.io.Serializable;
 
 public class NavigationDrawerActivity extends AppCompatActivity
-        implements Serializable, NavigationView.OnNavigationItemSelectedListener, ListaMisionesFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
+        implements Serializable, NavigationView.OnNavigationItemSelectedListener, ListaMisFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, AjustesFragment.OnFragmentInteractionListener, AyudaFragment.OnFragmentInteractionListener {
 
     private ImageView imagen;
     private TextView nav_user;
@@ -110,7 +110,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragment = new PerfilFragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_misiones) {
-            fragment = new ListaMisionesFragment();
+            fragment = new ListaMisFragment();
             Bundle bundl = new Bundle();
             bundl.putSerializable("elist", (Serializable) historia.getMisiones());
             bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará

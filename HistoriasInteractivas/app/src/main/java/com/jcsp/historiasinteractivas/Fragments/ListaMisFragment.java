@@ -28,7 +28,7 @@ import com.jcsp.historiasinteractivas.Util.AdaptadorListaPersonalizada;
 import java.util.List;
 
 
-public class ListaMisionesFragment extends Fragment {
+public class ListaMisFragment extends Fragment {
 
     private NavigationDrawerActivity nd;
 
@@ -37,7 +37,7 @@ public class ListaMisionesFragment extends Fragment {
 
     private ListView listView;
 
-    public ListaMisionesFragment() {
+    public ListaMisFragment() {
     }
 
 
