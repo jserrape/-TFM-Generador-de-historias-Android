@@ -90,7 +90,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
         }
     }
 
@@ -147,15 +147,27 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
     }
 
-    public void irAMision(int n){
+    public void irAMision(int n) {
         Fragment fragment = new MisionFragment();
         Bundle bundl = new Bundle();
         bundl.putSerializable("mision", (Serializable) historia.getMisiones().get(n));
+        bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
         fragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }
 
+    public void irALista() {
+        Fragment fragment = new ListaMisFragment();
+        Bundle bundl = new Bundle();
+        bundl.putSerializable("elist", (Serializable) historia.getMisiones());
+        bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
+        fragment.setArguments(bundl);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
+    }
+
+
     public Historia getHistoria() {
         return historia;
     }
+
 }

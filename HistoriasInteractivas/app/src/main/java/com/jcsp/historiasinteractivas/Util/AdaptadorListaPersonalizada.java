@@ -74,9 +74,11 @@ public class AdaptadorListaPersonalizada extends BaseAdapter {
 
         //Enviamos informacion a la vista apartir de la informacion que contenga la clase:
         titulo.setText(mis.getNombre_mision());
-        if (mis.getNombre_mision() != null) {
+        if (mis.getNombre_mision() != null && !mis.getCompletado().equals("False")) {
             String[] parts = mis.getCompletado().split(" ");
             descripcion.setText(contexto.getString(R.string.compleado) + " " + parts[0]);
+        }else{
+            descripcion.setText("");
         }
         //imagen.setImageResource(mis.getImagen());
         byte[] imageAsBytes = Base64.decode(mis.getIcono_mision(), Base64.DEFAULT);
