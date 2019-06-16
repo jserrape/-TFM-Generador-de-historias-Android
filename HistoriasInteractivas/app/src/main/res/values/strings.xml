@@ -10,6 +10,9 @@
     <!--- Errores -->
     <string name="error_conexion">Se ha producido un error en la conexión</string>
 
+    <!--- Spash -->
+    <string name="realizado_por">Aplicación realizada por \nJuan Carlos Serrano</string>
+
     <!--- Carousel -->
     <string name="empezar_juego">Empezar</string>
     <string name="bienvenido">¡Bienvenido!</string>

@@ -125,9 +125,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_cerrar_sesión) {
             SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("email", "NULL");
-            editor.putString("nombre", "NULL");
-            editor.putString("imagen", "NULL");
+            editor.putString("email", "null");
+            editor.putString("nombre", "null");
+            editor.putString("imagen", "null");
             editor.commit();
             Intent intent = new Intent(NavigationDrawerActivity.this, MainActivity.class);
             startActivityForResult(intent, 0);

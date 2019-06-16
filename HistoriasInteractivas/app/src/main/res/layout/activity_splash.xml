@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Juan Carlos Serrano Pérez on 16/06/19 20:15
+  ~  * Any question send an email to jcsp0003@red.ujaen.es
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 16/06/19 20:15
+  ~  */
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/gris"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actividades.SplashActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            app:srcCompat="@drawable/ugr"
+            android:layout_gravity="center"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/realizado_por"
+            android:gravity="center"
+            android:textColor="@color/blanco"
+            android:layout_marginTop="20dp"
+            tools:layout_editor_absoluteX="300dp"
+            tools:layout_editor_absoluteY="254dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
