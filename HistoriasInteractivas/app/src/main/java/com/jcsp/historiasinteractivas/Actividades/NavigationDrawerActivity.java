@@ -143,9 +143,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-    }
 
     public void irAMision(int n) {
         Fragment fragment = new MisionFragment();

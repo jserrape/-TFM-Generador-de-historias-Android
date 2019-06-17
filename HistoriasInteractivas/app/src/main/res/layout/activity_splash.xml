@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Juan Carlos Serrano Pérez on 16/06/19 20:15
   ~  * Any question send an email to jcsp0003@red.ujaen.es
@@ -11,26 +10,26 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/gris"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gris"
     tools:context=".Actividades.SplashActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            app:srcCompat="@drawable/ugr"
             android:layout_gravity="center"
+            app:srcCompat="@drawable/ugr"
             tools:layout_editor_absoluteX="28dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -38,12 +37,22 @@
             android:id="@+id/textView10"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/realizado_por"
-            android:gravity="center"
-            android:textColor="@color/blanco"
             android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/realizado_por"
+            android:textColor="@color/blanco"
             tools:layout_editor_absoluteX="300dp"
             tools:layout_editor_absoluteY="254dp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="519dp" />
+
 
     </LinearLayout>
 
