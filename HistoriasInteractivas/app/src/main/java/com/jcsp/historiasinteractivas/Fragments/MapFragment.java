@@ -74,7 +74,6 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
-        marks = new ArrayList<>();
 
         getMapAsync(this);
 
@@ -175,11 +174,8 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         this.mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
-    private void insertarMarcas() {
-        DateFormat df = new SimpleDateFormat("YYYY-MM-d HH:mm:ss");
-        String date = df.format(Calendar.getInstance().getTime());
-        Log.d("miraraqui", "fecha():"+date);
-
+    public void insertarMarcas() {
+        marks = new ArrayList<>();
 
         Log.d("miraraqui", "insertarMarcas()");
         boolean precedentesCompleados;
@@ -188,10 +184,10 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             Log.d("miraraqui", "Empieza la " + historia.getMisiones().get(i).getId());
             precedentesCompleados = true;
             parts = historia.getMisiones().get(i).getPrecedentes().replaceAll(" ", "").split(",");
-            Log.d("miraraqui", "parts[]:"+ Arrays.toString(parts));
+            Log.d("miraraqui", "parts[]:" + Arrays.toString(parts));
             for (int j = 0; j < parts.length; j++) {
                 if (!parts[j].equals("")) {
-                    if (historia.getMisiones().get(Integer.parseInt(parts[j])-1).getCompletado().equals("False")) {
+                    if (historia.getMisiones().get(Integer.parseInt(parts[j]) - 1).getCompletado().equals("False")) {
                         Log.d("miraraqui", "No se ha compleado la " + historia.getMisiones().get(Integer.parseInt(parts[j])).getId());
                         precedentesCompleados = false;
                         break;
@@ -251,16 +247,19 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         });
     }
 
-    public void eliminarMark() {
-        for (int i = 0; i < marks.size(); i++) {
-            if ((int) marks.get(i).getTag() == nMision) {
-                marks.get(i).remove();
-                marks.remove(i);
-                if (marks.isEmpty()) {
-                    //TODO mostrar algo de que se ha acabado
-                }
-                return;
+    public boolean comprobarFinal() {
+        for (int i = 0; i < historia.getMisiones().size(); i++) {
+            if (historia.getMisiones().get(i).getCompletado().equals("False")) {
+                return false;
             }
+        }
+        return true;
+    }
+
+    public void eliminarMarks() {
+        for (int i = 0; i < marks.size(); i++) {
+            marks.get(i).remove();
+            marks.remove(i);
         }
     }
 

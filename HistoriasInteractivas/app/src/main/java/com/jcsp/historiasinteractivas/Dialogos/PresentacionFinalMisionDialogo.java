@@ -48,6 +48,8 @@ public class PresentacionFinalMisionDialogo {
     private Mision mision;
     private MapFragment map;
 
+    private boolean finalJuego;
+
     @SuppressLint("ResourceAsColor")
     public PresentacionFinalMisionDialogo(final Context contexto, Mision mis, MapFragment mmap) {
         final Dialog dialogo = new Dialog(contexto);
@@ -59,7 +61,15 @@ public class PresentacionFinalMisionDialogo {
         this.map = mmap;
 
         this.mision.setCompletado((new SimpleDateFormat("YYYY-MM-d HH:mm:ss")).format(Calendar.getInstance().getTime()));
-        this.map.eliminarMark();
+
+        finalJuego = this.map.comprobarFinal();
+
+        if (!finalJuego) {
+            this.map.eliminarMarks();
+            this.map.insertarMarcas();
+        }else{
+            this.map.eliminarMarks();
+        }
 
         //Imagen
         ImageView imgTit = (ImageView) dialogo.findViewById(R.id.imagen_final_historia);
@@ -76,7 +86,12 @@ public class PresentacionFinalMisionDialogo {
         Button btn_cerrar = (Button) dialogo.findViewById(R.id.cerrar_presenacion_final);
         btn_cerrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                dialogo.dismiss();
+                if (finalJuego) {
+                    //TODO mostrar algo de que se ha acabado
+                    dialogo.dismiss();
+                } else {
+                    dialogo.dismiss();
+                }
             }
         });
 

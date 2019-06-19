@@ -113,7 +113,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragment = new ListaMisFragment();
             Bundle bundl = new Bundle();
             bundl.putSerializable("elist", (Serializable) historia.getMisiones());
-            bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
+            bundl.putSerializable("nd", (Serializable) this);
             fragment.setArguments(bundl);
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {
@@ -148,7 +148,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Fragment fragment = new MisionFragment();
         Bundle bundl = new Bundle();
         bundl.putSerializable("mision", (Serializable) historia.getMisiones().get(n));
-        bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
+        bundl.putSerializable("nd", (Serializable) this);
         fragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }
@@ -157,7 +157,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Fragment fragment = new ListaMisFragment();
         Bundle bundl = new Bundle();
         bundl.putSerializable("elist", (Serializable) historia.getMisiones());
-        bundl.putSerializable("nd", (Serializable) this); //TODO No se si fallará
+        bundl.putSerializable("nd", (Serializable) this);
         fragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }
