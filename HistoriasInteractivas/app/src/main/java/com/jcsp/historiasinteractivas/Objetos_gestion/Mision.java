@@ -10,6 +10,8 @@
 package com.jcsp.historiasinteractivas.Objetos_gestion;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mision implements Serializable {
     private int id;
@@ -28,11 +30,20 @@ public class Mision implements Serializable {
     private String imagen_final = null;
     private String resumen;
     private String precedentes;
+    private List<Integer> antecede = new ArrayList<>();
     private String completado = "borrar";
     private Pregunta pregunta = null;
 
     public String getCompletado() {
         return completado;
+    }
+
+    public List<Integer> getAntecede() {
+        return antecede;
+    }
+
+    public void setAntecede(List<Integer> antecede) {
+        this.antecede = antecede;
     }
 
     public void setCompletado(String completado) {
@@ -189,11 +200,11 @@ public class Mision implements Serializable {
                 ", codigo_localizacion='" + codigo_localizacion + '\'' +
                 ", tipo_prueba='" + tipo_prueba + '\'' +
                 ", codigo_prueba='" + codigo_prueba + '\'' +
-                ", descripcion_inicial='" + descripcion_inicial + '\'' +
+                //", descripcion_inicial='" + descripcion_inicial + '\'' +
                 //", imagen_inicial='" + imagen_inicial + '\'' +
-                ", descripcion_final='" + descripcion_final + '\'' +
+                //", descripcion_final='" + descripcion_final + '\'' +
                 //", imagen_final='" + imagen_final + '\'' +
-                ", resumen='" + resumen + '\'' +
+                //", resumen='" + resumen + '\'' +
                 ", precedentes='" + precedentes + '\'' +
                 '}';
     }

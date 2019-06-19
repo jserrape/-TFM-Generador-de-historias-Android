@@ -50,7 +50,10 @@ public class MisionFragment extends Fragment {
         if (getArguments() != null) {
             mision = (Mision) getArguments().getSerializable("mision");
             nd = (NavigationDrawerActivity) getArguments().getSerializable("nd");
+            int dat[] = new int[1];
+            dat[0] = 1;
             Log.d("tagmis", mision.toString());
+            Log.d("tagmis", dat.toString());
         }
     }
 

@@ -34,6 +34,8 @@ import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 import com.jcsp.historiasinteractivas.REST.Respuesta;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -51,12 +53,12 @@ public class PresentacionFinalMisionDialogo {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_presenacion_final_mision);
 
         this.mision = mis;
         this.map = mmap;
 
+        this.mision.setCompletado((new SimpleDateFormat("YYYY-MM-d HH:mm:ss")).format(Calendar.getInstance().getTime()));
         this.map.eliminarMark();
 
         //Imagen

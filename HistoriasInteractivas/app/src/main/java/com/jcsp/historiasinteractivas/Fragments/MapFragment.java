@@ -46,7 +46,11 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -70,7 +74,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
-        marks = new ArrayList<Marker>();
+        marks = new ArrayList<>();
 
         getMapAsync(this);
 
@@ -85,6 +89,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+
         mMap.setMyLocationEnabled(true);
         configuracionPreferenciasMapa();
         cargarConfiguracionCamara();
@@ -171,13 +176,35 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     }
 
     private void insertarMarcas() {
+        DateFormat df = new SimpleDateFormat("YYYY-MM-d HH:mm:ss");
+        String date = df.format(Calendar.getInstance().getTime());
+        Log.d("miraraqui", "fecha():"+date);
+
+
+        Log.d("miraraqui", "insertarMarcas()");
+        boolean precedentesCompleados;
+        String parts[];
         for (int i = 0; i < historia.getMisiones().size(); i++) {
-            if (historia.getMisiones().get(i).getCompletado().equals("False")) {
-                Log.d("miraraqui", historia.getMisiones().get(i).getCompletado());
+            Log.d("miraraqui", "Empieza la " + historia.getMisiones().get(i).getId());
+            precedentesCompleados = true;
+            parts = historia.getMisiones().get(i).getPrecedentes().replaceAll(" ", "").split(",");
+            Log.d("miraraqui", "parts[]:"+ Arrays.toString(parts));
+            for (int j = 0; j < parts.length; j++) {
+                if (!parts[j].equals("")) {
+                    if (historia.getMisiones().get(Integer.parseInt(parts[j])-1).getCompletado().equals("False")) {
+                        Log.d("miraraqui", "No se ha compleado la " + historia.getMisiones().get(Integer.parseInt(parts[j])).getId());
+                        precedentesCompleados = false;
+                        break;
+                    }
+                }
+            }
+            Log.d("miraraqui", "Codigo:" + historia.getMisiones().get(i).getId() + " precedentesCompleados:" + precedentesCompleados);
+            if (historia.getMisiones().get(i).getCompletado().equals("False") && precedentesCompleados) {
                 byte[] imageAsBytes = Base64.decode(historia.getMisiones().get(i).getIcono_mision().getBytes(), Base64.DEFAULT);
 
                 int height = 110;
                 int width = 110;
+
                 Bitmap smallMarker = Bitmap.createScaledBitmap(decodeByteArray(imageAsBytes, 0, imageAsBytes.length), width, height, false);
 
                 MarkerOptions markOp = new MarkerOptions()
