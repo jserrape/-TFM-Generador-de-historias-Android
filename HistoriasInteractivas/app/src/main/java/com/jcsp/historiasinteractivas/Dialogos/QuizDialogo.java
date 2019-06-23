@@ -45,7 +45,6 @@ public class QuizDialogo {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_quiz);
 
         this.mision = mis;
@@ -54,11 +53,11 @@ public class QuizDialogo {
 
 
         //Enunciado
-        enunciado = (TextView) dialogo.findViewById(R.id.enunciado_pregunta);
+        enunciado = dialogo.findViewById(R.id.enunciado_pregunta);
         enunciado.setText(mis.getPregunta().getEnunciado());
 
         //Respuestas
-        pr1 = (Button) dialogo.findViewById(R.id.respuesta_1);
+        pr1 = dialogo.findViewById(R.id.respuesta_1);
         pr1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (actuar) {
@@ -66,7 +65,7 @@ public class QuizDialogo {
                 }
             }
         });
-        pr2 = (Button) dialogo.findViewById(R.id.respuesta_2);
+        pr2 = dialogo.findViewById(R.id.respuesta_2);
         pr2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (actuar) {
@@ -74,7 +73,7 @@ public class QuizDialogo {
                 }
             }
         });
-        pr3 = (Button) dialogo.findViewById(R.id.respuesta_3);
+        pr3 = dialogo.findViewById(R.id.respuesta_3);
         pr3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (actuar) {
@@ -82,7 +81,7 @@ public class QuizDialogo {
                 }
             }
         });
-        pr4 = (Button) dialogo.findViewById(R.id.respuesta_4);
+        pr4 = dialogo.findViewById(R.id.respuesta_4);
         pr4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (actuar) {
@@ -92,7 +91,7 @@ public class QuizDialogo {
         });
 
         //Boton cerrar
-        btn_cerrar = (Button) dialogo.findViewById(R.id.cencelar_pregunta);
+        btn_cerrar = dialogo.findViewById(R.id.cencelar_pregunta);
         btn_cerrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!actuar) {

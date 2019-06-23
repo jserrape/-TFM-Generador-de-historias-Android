@@ -20,7 +20,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -41,8 +40,6 @@ import retrofit2.Response;
 
 public class EscaneoQRDialogo {
 
-    private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
-
     private Mision mision;
     private Context contexto;
 
@@ -61,17 +58,15 @@ public class EscaneoQRDialogo {
         dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_escanero_qr);
 
         this.contexto=contexto;
         this.mision = mis;
         this.map = mmap;
 
-        mostrarToast("Inicio la acividad de escaneo");
 
-        cameraView = (SurfaceView) dialogo.findViewById(R.id.camera_view);
-        btn_cancelar = (Button) dialogo.findViewById(R.id.button_cancelar_qr);
+        cameraView = dialogo.findViewById(R.id.camera_view);
+        btn_cancelar = dialogo.findViewById(R.id.button_cancelar_qr);
         btn_cancelar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 barcodeDetector.release();
@@ -81,12 +76,7 @@ public class EscaneoQRDialogo {
         });
 
         initQR();
-
         dialogo.show();
-    }
-
-    private void mostrarToast(String txt){
-        Toast.makeText(contexto, txt, Toast.LENGTH_SHORT).show();
     }
 
     private void initQR() {

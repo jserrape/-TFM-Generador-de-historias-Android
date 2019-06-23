@@ -30,20 +30,14 @@ public class Mision implements Serializable {
     private String imagen_final = null;
     private String resumen;
     private String precedentes;
-    private List<Integer> antecede = new ArrayList<>();
+    private String misiones_canceladas;
     private String completado = "borrar";
     private Pregunta pregunta = null;
+    private int mision_final;
+    private boolean anulada = false;
 
     public String getCompletado() {
         return completado;
-    }
-
-    public List<Integer> getAntecede() {
-        return antecede;
-    }
-
-    public void setAntecede(List<Integer> antecede) {
-        this.antecede = antecede;
     }
 
     public void setCompletado(String completado) {
@@ -70,40 +64,20 @@ public class Mision implements Serializable {
         return id_historia;
     }
 
-    public void setId_historia(int id_historia) {
-        this.id_historia = id_historia;
-    }
-
     public String getNombre_mision() {
         return nombre_mision;
-    }
-
-    public void setNombre_mision(String nombre_mision) {
-        this.nombre_mision = nombre_mision;
     }
 
     public String getIcono_mision() {
         return icono_mision;
     }
 
-    public void setIcono_mision(String icono_mision) {
-        this.icono_mision = icono_mision;
-    }
-
     public Double getLatitud_mision() {
         return latitud_mision;
     }
 
-    public void setLatitud_mision(Double latitud_mision) {
-        this.latitud_mision = latitud_mision;
-    }
-
     public Double getLongitud_mision() {
         return longitud_mision;
-    }
-
-    public void setLongitud_mision(Double longitud_mision) {
-        this.longitud_mision = longitud_mision;
     }
 
     public String getTipo_localizacion() {
@@ -174,16 +148,28 @@ public class Mision implements Serializable {
         return resumen;
     }
 
-    public void setResumen(String resumen) {
-        this.resumen = resumen;
-    }
-
     public String getPrecedentes() {
         return precedentes;
     }
 
-    public void setPrecedentes(String precedentes) {
-        this.precedentes = precedentes;
+    public int isMision_final() {
+        return mision_final;
+    }
+
+    public String getMisiones_canceladas() {
+        return misiones_canceladas;
+    }
+
+    public void setMisiones_canceladas(String misiones_canceladas) {
+        this.misiones_canceladas = misiones_canceladas;
+    }
+
+    public boolean isAnulada() {
+        return anulada;
+    }
+
+    public void setAnulada(boolean anulada) {
+        this.anulada = anulada;
     }
 
     @Override
@@ -206,6 +192,7 @@ public class Mision implements Serializable {
                 //", imagen_final='" + imagen_final + '\'' +
                 //", resumen='" + resumen + '\'' +
                 ", precedentes='" + precedentes + '\'' +
+                ", mision_final='" + mision_final + '\'' +
                 '}';
     }
 }

@@ -15,8 +15,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
@@ -28,8 +26,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.jcsp.historiasinteractivas.Actividades.ListaHistoriasActivity;
-import com.jcsp.historiasinteractivas.Actividades.LoginActivity;
 import com.jcsp.historiasinteractivas.Actividades.MainActivity;
 import com.jcsp.historiasinteractivas.R;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
@@ -78,28 +74,28 @@ public class PerfilFragment extends Fragment {
         prefs = Objects.requireNonNull(this.getActivity()).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
 
         //Imagen
-        imagen = (ImageView) vista.findViewById(R.id.perfil_image);
+        imagen = vista.findViewById(R.id.perfil_image);
         byte[] imageAsBytes = Base64.decode(prefs.getString("imagen", "NULL").getBytes(), Base64.DEFAULT);
         imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imagen.setAdjustViewBounds(true);
 
         //Email
-        email = (EditText) vista.findViewById(R.id.perfil_email);
+        email = vista.findViewById(R.id.perfil_email);
         email.setText(prefs.getString("email", "NULL"));
         email.setEnabled(false);
 
         //Nombre
-        nombre = (EditText) vista.findViewById(R.id.perfil_nombre);
+        nombre = vista.findViewById(R.id.perfil_nombre);
         nombre.setText(prefs.getString("nombre", "NULL"));
         nombre.setEnabled(false);
 
         //Password
-        pass_actual = (EditText) vista.findViewById(R.id.editText_perfil_actual);
-        pass_nueva = (EditText) vista.findViewById(R.id.editText_perfil_nueva);
-        pass_repetir = (EditText) vista.findViewById(R.id.editText_perfil_repetir);
+        pass_actual = vista.findViewById(R.id.editText_perfil_actual);
+        pass_nueva = vista.findViewById(R.id.editText_perfil_nueva);
+        pass_repetir = vista.findViewById(R.id.editText_perfil_repetir);
 
         //Boton cambio pass
-        Button btn_cambio = (Button) vista.findViewById(R.id.btn_perfil_cambio);
+        Button btn_cambio = vista.findViewById(R.id.btn_perfil_cambio);
         btn_cambio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +126,7 @@ public class PerfilFragment extends Fragment {
         });
 
         //Boton eliminar cuenta
-        Button btn_eliminar = (Button) vista.findViewById(R.id.btn_perfil_eliminar);
+        Button btn_eliminar = vista.findViewById(R.id.btn_perfil_eliminar);
         btn_eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

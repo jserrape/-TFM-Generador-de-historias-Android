@@ -76,7 +76,7 @@ public class AjustesFragment extends Fragment {
         prefs = Objects.requireNonNull(this.getActivity()).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
 
         //Spinner idioma
-        spinner_idioma = (Spinner) vista.findViewById(R.id.spinner_idioma);
+        spinner_idioma = vista.findViewById(R.id.spinner_idioma);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.idiomas_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_idioma.setAdapter(adapter);
@@ -93,7 +93,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Spinner estilo
-        spinner_estilo = (Spinner) vista.findViewById(R.id.spinner_estilo);
+        spinner_estilo = vista.findViewById(R.id.spinner_estilo);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.estilos_array, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_estilo.setAdapter(adapter2);
@@ -110,7 +110,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Switch centrar
-        switch_centrar = (Switch) vista.findViewById(R.id.switch_btn_centrar);
+        switch_centrar = vista.findViewById(R.id.switch_btn_centrar);
         switch_centrar.setChecked(Boolean.parseBoolean(prefs.getString("centrar","true")));
         switch_centrar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -119,7 +119,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Switch zoom
-        switch_zoom = (Switch) vista.findViewById(R.id.switch_btn_zoom);
+        switch_zoom = vista.findViewById(R.id.switch_btn_zoom);
         switch_zoom.setChecked(Boolean.parseBoolean(prefs.getString("zoom","true")));
         switch_zoom.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -128,7 +128,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Switch brújula
-        switch_brujula = (Switch) vista.findViewById(R.id.switch_brujula);
+        switch_brujula = vista.findViewById(R.id.switch_brujula);
         switch_brujula.setChecked(Boolean.parseBoolean(prefs.getString("brujula","true")));
         switch_brujula.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -137,7 +137,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Switch segundo plano
-        segundo_plano = (Switch) vista.findViewById(R.id.switch_segundo_plano);
+        segundo_plano = vista.findViewById(R.id.switch_segundo_plano);
         segundo_plano.setChecked(Boolean.parseBoolean(prefs.getString("segundo_plano","true")));
         segundo_plano.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -146,7 +146,7 @@ public class AjustesFragment extends Fragment {
         });
 
         //Boton cancelar
-        btn_cancelar = (Button) vista.findViewById(R.id.btn_ajuses_cancelar);
+        btn_cancelar = vista.findViewById(R.id.btn_ajuses_cancelar);
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,11 +176,10 @@ public class AjustesFragment extends Fragment {
         });
 
         //Boton guardar
-        btn_guardar = (Button) vista.findViewById(R.id.btn_ajuses_guardar);
+        btn_guardar = vista.findViewById(R.id.btn_ajuses_guardar);
         btn_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(cambio_estilo || cambio_idioma || cambio_zoom || cambio_centrar || cambio_brujula || cambio_segundo_plano) {
                     SharedPreferences.Editor editor = prefs.edit();
 

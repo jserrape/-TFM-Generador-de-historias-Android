@@ -37,29 +37,28 @@ public class PresentacionMisionDialogo {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_presentacion_mision);
 
         this.mision = mis;
         this.map = mmap;
 
         //Titulo
-        TextView titulo = (TextView) dialogo.findViewById(R.id.titulo_mision_presentacion);
+        TextView titulo = dialogo.findViewById(R.id.titulo_mision_presentacion);
         titulo.setText(mis.getNombre_mision());
 
         //Imagen
-        ImageView imgTit = (ImageView) dialogo.findViewById(R.id.imagen_inicial_historia);
+        ImageView imgTit = dialogo.findViewById(R.id.imagen_inicial_historia);
         byte[] imageAsBytes = Base64.decode(mision.getImagen_inicial().getBytes(), Base64.DEFAULT);
         imgTit.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imgTit.setAdjustViewBounds(true);
 
         //Texto
-        TextView descripcion = (TextView) dialogo.findViewById(R.id.descripcion_inicial);
+        TextView descripcion = dialogo.findViewById(R.id.descripcion_inicial);
         descripcion.setText(mis.getDescripcion_inicial().replaceAll("#", System.getProperty("line.separator") + System.getProperty("line.separator")));
         descripcion.setMovementMethod(new ScrollingMovementMethod());
 
         //Boton cancelar
-        Button btn_cancelar = (Button) dialogo.findViewById(R.id.cancelar_presenacion);
+        Button btn_cancelar = dialogo.findViewById(R.id.cancelar_presenacion);
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dialogo.dismiss();
@@ -67,11 +66,10 @@ public class PresentacionMisionDialogo {
         });
 
         //Boton aceptar
-        Button btn_escalear = (Button) dialogo.findViewById(R.id.escanear_presenacion);
+        Button btn_escalear = dialogo.findViewById(R.id.escanear_presenacion);
         btn_escalear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (mision.getTipo_localizacion().equals("qr")) {
-                    Toast.makeText(dialogo.getContext(), "Ir a qr", Toast.LENGTH_SHORT).show();
                     map.iniciarDialogo(2);
                     (new Permisos()).soliciarPermisoCamara(contexto);
                 } else {
@@ -84,7 +82,6 @@ public class PresentacionMisionDialogo {
         if (mision.getTipo_localizacion().equals("qr")) {
             (new Permisos()).soliciarPermisoCamara(contexto);
         }
-
         dialogo.show();
     }
 }

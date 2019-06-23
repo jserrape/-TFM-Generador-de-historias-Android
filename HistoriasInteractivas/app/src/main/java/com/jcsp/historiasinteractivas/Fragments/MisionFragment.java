@@ -60,18 +60,16 @@ public class MisionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_mision, container, false);
-        imagen = (ImageView) vista.findViewById(R.id.imageView3);
-        completado = (TextView) vista.findViewById(R.id.textView11);
-        descripcion = (TextView) vista.findViewById(R.id.textView12);
-        btnAtras = (Button) vista.findViewById(R.id.button2);
+        imagen = vista.findViewById(R.id.imageView3);
+        completado = vista.findViewById(R.id.textView11);
+        descripcion = vista.findViewById(R.id.textView12);
+        btnAtras = vista.findViewById(R.id.button2);
         btnAtras.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 nd.irALista();
             }
         });
-
         comprobarAtributosMision();
-
         return vista;
     }
 
@@ -90,7 +88,6 @@ public class MisionFragment extends Fragment {
                     mision.setImagen_inicial(response.body().getImagen_inicial());
                     mision.setDescripcion_final(response.body().getDescripcion_final());
                     mision.setImagen_final(response.body().getImagen_final());
-
                     aniadirCampos();
                 }
 
@@ -117,10 +114,9 @@ public class MisionFragment extends Fragment {
         imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imagen.setAdjustViewBounds(true);
 
-        Log.d("tagmis",mision.getCompletado());
         if (!mision.getCompletado().equals("False")) {
             completado.setText(mision.getCompletado());
-        }else{
+        } else {
             completado.setText("");
         }
         descripcion.setMovementMethod(new ScrollingMovementMethod());
@@ -136,7 +132,4 @@ public class MisionFragment extends Fragment {
         super.onDetach();
     }
 
-
-    public interface OnFragmentInteractionListener {
-    }
 }

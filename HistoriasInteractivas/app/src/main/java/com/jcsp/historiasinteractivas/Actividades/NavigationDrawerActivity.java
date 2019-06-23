@@ -52,12 +52,12 @@ public class NavigationDrawerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         historia = (Historia) getIntent().getSerializableExtra("Historia");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -65,20 +65,20 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Fragment fragment = new MapFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main, fragment).commit();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         getSupportActionBar().hide();
 
         //Inicializo los objetos
         SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         View hView = navigationView.getHeaderView(0);
-        nav_user = (TextView) hView.findViewById(R.id.text_nombre_nd);
+        nav_user = hView.findViewById(R.id.text_nombre_nd);
         nav_user.setText(prefs.getString("nombre", "NULL"));
 
-        nav_mail = (TextView) hView.findViewById(R.id.text_email_nd);
+        nav_mail = hView.findViewById(R.id.text_email_nd);
         nav_mail.setText(prefs.getString("email", "NULL"));
 
-        imagen = (ImageView) hView.findViewById(R.id.imageView_nd);
+        imagen = hView.findViewById(R.id.imageView_nd);
         byte[] imageAsBytes = Base64.decode(prefs.getString("imagen", "NULL").getBytes(), Base64.DEFAULT);
         imagen.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imagen.setAdjustViewBounds(true);
@@ -86,7 +86,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -113,7 +113,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragment = new ListaMisFragment();
             Bundle bundl = new Bundle();
             bundl.putSerializable("elist", (Serializable) historia.getMisiones());
-            bundl.putSerializable("nd", (Serializable) this);
+            bundl.putSerializable("nd", this);
             fragment.setArguments(bundl);
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {
@@ -138,7 +138,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -147,8 +147,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public void irAMision(int n) {
         Fragment fragment = new MisionFragment();
         Bundle bundl = new Bundle();
-        bundl.putSerializable("mision", (Serializable) historia.getMisiones().get(n));
-        bundl.putSerializable("nd", (Serializable) this);
+        bundl.putSerializable("mision", historia.getMisiones().get(n));
+        bundl.putSerializable("nd", this);
         fragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }
@@ -157,7 +157,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Fragment fragment = new ListaMisFragment();
         Bundle bundl = new Bundle();
         bundl.putSerializable("elist", (Serializable) historia.getMisiones());
-        bundl.putSerializable("nd", (Serializable) this);
+        bundl.putSerializable("nd", this);
         fragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
     }

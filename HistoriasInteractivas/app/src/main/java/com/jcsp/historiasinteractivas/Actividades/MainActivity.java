@@ -45,10 +45,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-
         //Facebook
         callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.loginButton);
         loginButton.setReadPermissions("email");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Registro
-        btnRegistro = (Button) findViewById(R.id.loginnueva);
+        btnRegistro = findViewById(R.id.loginnueva);
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Login
-        btnLogin = (Button) findViewById(R.id.loginacceso);
+        btnLogin = findViewById(R.id.loginacceso);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Imagen
-        ImageView img = (ImageView) findViewById(R.id.imageViewMain);
+        ImageView img = findViewById(R.id.imageViewMain);
         img.setImageResource(R.drawable.logo_app);
 
         //Compruebo si es la primera vez para mostrar el carousel de presentacion

@@ -67,18 +67,15 @@ public class ListaHistoriasActivity extends AppCompatActivity {
             public void onResponse(Call<List<Historia>> call, final Response<List<Historia>> response) {
                 historiasNombres = new String[response.body().size()];
                 int i = 0;
-
                 //Meto los nombres de las histtorias en el array que será el adapter de la lista
                 for (Historia post : response.body()) {
                     historiasNombres[i] = post.getNombre_historia();
-                    //Toast.makeText(getApplicationContext(), historiasNombres[i], Toast.LENGTH_SHORT).show();
                     ++i;
                 }
 
                 //Creo la lista
                 lst = findViewById(R.id.listahistorias);
-                //TODO Cambiar "clase" por una referencia al padre
-                adapter = new ArrayAdapter<String>(clase, android.R.layout.simple_list_item_1, android.R.id.text1, historiasNombres);
+                adapter = new ArrayAdapter<>(clase, android.R.layout.simple_list_item_1, android.R.id.text1, historiasNombres);
                 lst.setAdapter(adapter);
 
                 //Creo el listener de seleccionar un elemento
@@ -109,7 +106,6 @@ public class ListaHistoriasActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
                 progressDialog.dismiss();
             }
 
@@ -125,16 +121,6 @@ public class ListaHistoriasActivity extends AppCompatActivity {
         mAPIService.solicitud_datos_historia(id, pref.getString("email", "null")).enqueue(new Callback<Historia>() {
             @Override
             public void onResponse(Call<Historia> call, Response<Historia> response) {
-                //TODO borrar cosas
-                //Toast.makeText(getApplicationContext(), "ID "+response.body().getDescripcion_historia(), Toast.LENGTH_SHORT).show();
-                //Log.d("RespuestaRegistro", "hola");
-                //Log.d("miraraqui", response.body().toString());
-                //Borrar esto
-                Historia hist = response.body();
-                for (int i = 0; i < hist.getMisiones().size(); i++) {
-                    Log.d("miraraqui", i + ": " + hist.getMisiones().get(i).toString());
-                }
-
                 Intent intent = new Intent(ListaHistoriasActivity.this, HistoriaActivity.class);
                 intent.putExtra("Historia", response.body());
                 startActivityForResult(intent, 0);

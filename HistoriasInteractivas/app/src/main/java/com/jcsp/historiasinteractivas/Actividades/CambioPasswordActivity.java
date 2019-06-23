@@ -44,8 +44,8 @@ public class CambioPasswordActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.cambiar_pass);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        email_field = (TextView) findViewById(R.id.cambio_pass_editText);
-        btnCambiar = (Button) findViewById(R.id.btn_cambio_pass);
+        email_field = findViewById(R.id.cambio_pass_editText);
+        btnCambiar = findViewById(R.id.btn_cambio_pass);
         btnCambiar.setEnabled(false);
 
         email_field.addTextChangedListener(new TextWatcher() {
@@ -85,14 +85,13 @@ public class CambioPasswordActivity extends AppCompatActivity {
         mAPIService.solicitud_reseteo_password(mail).enqueue(new Callback<Respuesta>() {
             @Override
             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                Log.d("RespuestaRegistro", response.body().toString());
-                //TODO Cambiar "act" por una referencia al padre
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(act);
                 dialogo1.setMessage(R.string.mail_enviado);
                 dialogo1.setCancelable(false);
                 dialogo1.setPositiveButton(R.string.confirmar2, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                         //aceptar();
+                        //TODO revisar esto
                     }
                 });
                 dialogo1.show();

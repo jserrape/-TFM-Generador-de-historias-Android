@@ -51,15 +51,14 @@ public class PruebaQRDialogo {
         dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_prueba_qr);
 
         this.contexto = contexto;
         this.mision = mis;
         this.map = mmap;
 
-        cameraView = (SurfaceView) dialogo.findViewById(R.id.prueba_camera_view);
-        btn_cancelar = (Button) dialogo.findViewById(R.id.button_cancelar_prueba_qr);
+        cameraView = dialogo.findViewById(R.id.prueba_camera_view);
+        btn_cancelar = dialogo.findViewById(R.id.button_cancelar_prueba_qr);
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 barcodeDetector.release();
@@ -69,7 +68,6 @@ public class PruebaQRDialogo {
         });
 
         initQR();
-
         dialogo.show();
     }
 
@@ -129,14 +127,6 @@ public class PruebaQRDialogo {
                         });
                     }
 
-                    /**GetPostService mAPIService = ApiUtils.getAPIService();
-                     mAPIService.enviar_texto(txt).enqueue(new Callback<Respuesta>() {
-                    @Override public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                    }
-
-                    @Override public void onFailure(Call<Respuesta> call, Throwable t) {
-                    }
-                    });*/
                     //Cierra el detector de códigos
                     //barcodeDetector.release();
                 }

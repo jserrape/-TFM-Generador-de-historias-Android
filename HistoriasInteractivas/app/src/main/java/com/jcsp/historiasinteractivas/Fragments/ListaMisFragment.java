@@ -55,7 +55,7 @@ public class ListaMisFragment extends Fragment {
             nd = (NavigationDrawerActivity) getArguments().getSerializable("nd");
         }
 
-        listView = (ListView) vista.findViewById(R.id.lista_fragment_misiones);
+        listView = vista.findViewById(R.id.lista_fragment_misiones);
 
         AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions, getContext());
         listView.setAdapter(adaptador);

@@ -17,7 +17,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +35,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcsp.historiasinteractivas.Actividades.NavigationDrawerActivity;
 import com.jcsp.historiasinteractivas.Dialogos.EscaneoQRDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.FeliciacionUbicacionDialogo;
+import com.jcsp.historiasinteractivas.Dialogos.FinalHistoriaDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionFinalMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PresentacionMisionDialogo;
 import com.jcsp.historiasinteractivas.Dialogos.PruebaQRDialogo;
@@ -46,11 +46,7 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Historia;
 import com.jcsp.historiasinteractivas.REST.ApiUtils;
 import com.jcsp.historiasinteractivas.REST.GetPostService;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,11 +68,8 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-
         this.historia = ((NavigationDrawerActivity) getActivity()).getHistoria();
-
         getMapAsync(this);
-
         return rootView;
     }
 
@@ -176,26 +169,32 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
     public void insertarMarcas() {
         marks = new ArrayList<>();
-
-        Log.d("miraraqui", "insertarMarcas()");
         boolean precedentesCompleados;
         String parts[];
         for (int i = 0; i < historia.getMisiones().size(); i++) {
-            Log.d("miraraqui", "Empieza la " + historia.getMisiones().get(i).getId());
             precedentesCompleados = true;
             parts = historia.getMisiones().get(i).getPrecedentes().replaceAll(" ", "").split(",");
-            Log.d("miraraqui", "parts[]:" + Arrays.toString(parts));
+            //Compruebo si se han completado las misiones preedentes
             for (int j = 0; j < parts.length; j++) {
                 if (!parts[j].equals("")) {
                     if (historia.getMisiones().get(Integer.parseInt(parts[j]) - 1).getCompletado().equals("False")) {
-                        Log.d("miraraqui", "No se ha compleado la " + historia.getMisiones().get(Integer.parseInt(parts[j])).getId());
                         precedentesCompleados = false;
                         break;
                     }
                 }
             }
-            Log.d("miraraqui", "Codigo:" + historia.getMisiones().get(i).getId() + " precedentesCompleados:" + precedentesCompleados);
-            if (historia.getMisiones().get(i).getCompletado().equals("False") && precedentesCompleados) {
+
+            //Si la he completado, miro las que cancelo
+            if (!historia.getMisiones().get(i).getCompletado().equals("False")) {
+                parts = historia.getMisiones().get(i).getMisiones_canceladas().replaceAll(" ", "").split(",");
+                for (int j = 0; j < parts.length; j++) {
+                    if (!parts[j].equals("")) {
+                        historia.getMisiones().get(Integer.parseInt(parts[j]) - 1).setAnulada(true);
+                    }
+                }
+            }
+
+            if (historia.getMisiones().get(i).getCompletado().equals("False") && precedentesCompleados && !historia.getMisiones().get(i).isAnulada()) {
                 byte[] imageAsBytes = Base64.decode(historia.getMisiones().get(i).getIcono_mision().getBytes(), Base64.DEFAULT);
 
                 int height = 110;
@@ -248,23 +247,28 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     }
 
     public boolean comprobarFinal() {
-        for (int i = 0; i < historia.getMisiones().size(); i++) {
-            if (historia.getMisiones().get(i).getCompletado().equals("False")) {
-                return false;
+        return historia.getMisiones().get(nMision).isMision_final() != 0;
+    }
+
+    public void comprobarCancelaciones() {
+        if (!historia.getMisiones().get(nMision).getMisiones_canceladas().equals("")) {
+            String parts[] = historia.getMisiones().get(nMision).getPrecedentes().replaceAll(" ", "").split(",");
+            for (int i = 0; i < parts.length; i++) {
+                if (!parts[i].equals("")) {
+                    historia.getMisiones().get(Integer.parseInt(parts[i]) - 1).setAnulada(true);
+                }
             }
         }
-        return true;
     }
 
     public void eliminarMarks() {
-        for (int i = 0; i < marks.size(); i++) {
-            marks.get(i).remove();
-            marks.remove(i);
+        while (!marks.isEmpty()){
+            marks.get(0).remove();
+            marks.remove(0);
         }
     }
 
     public void iniciarDialogo(int n) {
-        Toast.makeText(getContext(), "Iniciar dialogo " + n, Toast.LENGTH_SHORT).show();
         switch (n) {
             case 1:
                 new PresentacionMisionDialogo(getContext(), historia.getMisiones().get(nMision), this);
@@ -287,8 +291,12 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 new QuizDialogo(getContext(), historia.getMisiones().get(nMision), this);
                 break;
             case 7:
-                //Vista final
+                //Vista final de mision
                 new PresentacionFinalMisionDialogo(getContext(), historia.getMisiones().get(nMision), this);
+                break;
+            case 8:
+                //Vista final de la historia
+                new FinalHistoriaDialogo(getContext());
                 break;
         }
     }

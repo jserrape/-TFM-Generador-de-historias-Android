@@ -17,10 +17,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jcsp.historiasinteractivas.R;
@@ -38,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         String urlGif = "https://newvitruvian.com/images/transparent-gears-loading-gif-2.gif";
-        ImageView imageView = (ImageView) findViewById(R.id.imageView4);
+        ImageView imageView = findViewById(R.id.imageView4);
         Uri uri = Uri.parse(urlGif);
         Glide.with(getApplicationContext()).load(uri).into(imageView);
 
@@ -47,13 +45,11 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent;
                 SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
                 String aux = prefs.getString("email", "null");
-                Toast.makeText(getApplicationContext(), aux, Toast.LENGTH_SHORT).show();
                 if (aux.equals("null")) {
                     intent = new Intent(SplashActivity.this, MainActivity.class);
                 } else {
                     intent = new Intent(SplashActivity.this, ListaHistoriasActivity.class);
                 }
-
                 startActivity(intent);
                 finish();
             }

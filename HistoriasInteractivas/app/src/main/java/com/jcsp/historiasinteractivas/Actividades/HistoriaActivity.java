@@ -37,18 +37,18 @@ public class HistoriaActivity extends AppCompatActivity {
         historia = (Historia) getIntent().getSerializableExtra("Historia");
 
         //Titulo
-        ImageView imgTit = (ImageView) findViewById(R.id.imageViewTituloHistoria);
+        ImageView imgTit = findViewById(R.id.imageViewTituloHistoria);
         byte[] imageAsBytes = Base64.decode(historia.getImagen_historia().getBytes(), Base64.DEFAULT);
         imgTit.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         imgTit.setAdjustViewBounds(true);
 
         //Descripción
-        TextView textDes = (TextView) findViewById(R.id.textViewDescripcionHistoria);
-        textDes.setText(historia.getDescripcion_historia().replaceAll("#",System.getProperty("line.separator")+System.getProperty("line.separator")));
+        TextView textDes = findViewById(R.id.textViewDescripcionHistoria);
+        textDes.setText(historia.getDescripcion_historia().replaceAll("#", System.getProperty("line.separator") + System.getProperty("line.separator")));
         textDes.setMovementMethod(new ScrollingMovementMethod());
 
         //Boton
-        Button btnRegistro = (Button) findViewById(R.id.buttonEmpezarHistoria);
+        Button btnRegistro = findViewById(R.id.buttonEmpezarHistoria);
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.acceso);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        email = (EditText) findViewById(R.id.loginemail);
-        pass = (EditText) findViewById(R.id.loginpass);
-        passOlvidada = (TextView) findViewById(R.id.olvidarpass);
-        btnAcceso = (Button) findViewById(R.id.botonlogin);
+        email = findViewById(R.id.loginemail);
+        pass = findViewById(R.id.loginpass);
+        passOlvidada = findViewById(R.id.olvidarpass);
+        btnAcceso = findViewById(R.id.botonlogin);
 
         passOlvidada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -78,9 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     mAPIService.loginUsuario(mail, password).enqueue(new Callback<Respuesta>() {
                         @Override
                         public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                            Log.d("RespuestaRegistro", response.body().toString());
                             if (Integer.parseInt(response.body().getStatus()) == 200) {
-                                Log.d("DatosUsuario", response.body().getResulado());
                                 JSONObject user = null;
                                 try {
                                     user = (new JSONObject(response.body().getResulado()));
@@ -111,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Imagen
-        ImageView img = (ImageView) findViewById(R.id.imageViewLogin);
+        ImageView img = findViewById(R.id.imageViewLogin);
         img.setImageResource(R.drawable.imagen_login);
     }
 

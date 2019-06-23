@@ -11,19 +11,15 @@ package com.jcsp.historiasinteractivas.Dialogos;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jcsp.historiasinteractivas.R;
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageClickListener;
-import com.synnapps.carouselview.ImageListener;
 import com.synnapps.carouselview.ViewListener;
 
 public class CarouserInicialDialogo {
@@ -44,12 +40,12 @@ public class CarouserInicialDialogo {
 
         this.contexto = contexto;
 
-        carousel = (CarouselView) dialogo.findViewById(R.id.carousel_view_presenacion);
+        carousel = dialogo.findViewById(R.id.carousel_view_presenacion);
         carousel.setPageCount(imagenes.length);
         carousel.setViewListener(viewListener);
 
         //Boton aceptar
-        btn = (Button) dialogo.findViewById(R.id.button_cerrar_carousel);
+        btn = dialogo.findViewById(R.id.button_cerrar_carousel);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dialogo.dismiss();
@@ -63,14 +59,14 @@ public class CarouserInicialDialogo {
 
         @Override
         public View setViewForPosition(int position) {
-            LayoutInflater inflater = (LayoutInflater) contexto.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            LayoutInflater inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View customView = inflater.inflate(R.layout.custom_view_carouser_presentacion, null);
 
-            TextView textView1 = (TextView) customView.findViewById(R.id.textView_titulo_carousel);
-            ImageView imageView = (ImageView) customView.findViewById(R.id.imageView_carousel_presentacion);
-            TextView textView2 = (TextView) customView.findViewById(R.id.textView_texto_carousel);
+            TextView textView1 = customView.findViewById(R.id.textView_titulo_carousel);
+            ImageView imageView = customView.findViewById(R.id.imageView_carousel_presentacion);
+            TextView textView2 = customView.findViewById(R.id.textView_texto_carousel);
 
-            switch (position){
+            switch (position) {
                 case 0:
                     textView1.setText(R.string.bienvenido);
                     imageView.setImageResource(imagenes[position]);

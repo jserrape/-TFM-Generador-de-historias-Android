@@ -11,7 +11,6 @@ package com.jcsp.historiasinteractivas.Dialogos;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -40,7 +39,6 @@ public class FeliciacionUbicacionDialogo {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
-        //dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(R.color.blanco));
         dialogo.setContentView(R.layout.dialogo_feliciacion_ubicacion);
 
         this.mision = mis;
@@ -51,22 +49,16 @@ public class FeliciacionUbicacionDialogo {
         btn_escalear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (mision.getTipo_prueba().equals("qr")) {
-                    Toast.makeText(dialogo.getContext(), "Ir a qr", Toast.LENGTH_SHORT).show();
                     map.iniciarDialogo(5);
                 } else {
-                    Toast.makeText(dialogo.getContext(), "Ir a pregunta", Toast.LENGTH_SHORT).show();
                     //Miro si pregunta es NULL, y de ser así la pido al servidor
                     if(mision.getPregunta()==null){
-                        Toast.makeText(dialogo.getContext(), "NULL", Toast.LENGTH_SHORT).show();
-
                         GetPostService mAPIService = ApiUtils.getAPIService();
                         mAPIService.solicitud_pregunta(mision.getCodigo_prueba()).enqueue(new Callback<Pregunta>() {
 
                             @Override
                             public void onResponse(Call<Pregunta> call, Response<Pregunta> response) {
-                                Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_SHORT).show();
                                 mision.setPregunta(response.body());
-
                                 map.iniciarDialogo(6);
                             }
 
@@ -78,7 +70,6 @@ public class FeliciacionUbicacionDialogo {
 
 
                     }else{
-                        Toast.makeText(dialogo.getContext(), "NO ES NULL", Toast.LENGTH_SHORT).show();
                         map.iniciarDialogo(6);
                     }
                 }

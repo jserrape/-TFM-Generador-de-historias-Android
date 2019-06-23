@@ -41,7 +41,7 @@ public class AyudaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_ayuda, container, false);
 
-        web = (WebView) vista.findViewById(R.id.terminosweb);
+        web = vista.findViewById(R.id.terminosweb);
         web.loadUrl("file:///android_asset/terminos.html");
 
         return vista;
