@@ -296,7 +296,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 break;
             case 8:
                 //Vista final de la historia
-                new FinalHistoriaDialogo(getContext());
+                new FinalHistoriaDialogo(getContext(),historia.getNombre_historia());
                 break;
         }
     }

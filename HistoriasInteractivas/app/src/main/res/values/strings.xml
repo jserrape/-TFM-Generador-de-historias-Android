@@ -121,7 +121,7 @@
 
     <!--- Final del juego -->
     <string name="final1">Felicidades por completar la historia </string>
-    <string name="final2">. Esperamos que haya disfrutado del relato</string>
+    <string name="final2">. Esperamos que haya disfrutado del relato.\nRecuerda que las historias interactivas pueden tener múltiples alternativas. ¡Pruébalas todas!</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

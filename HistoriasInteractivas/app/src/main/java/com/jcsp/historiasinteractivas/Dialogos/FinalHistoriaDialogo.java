@@ -11,22 +11,29 @@ package com.jcsp.historiasinteractivas.Dialogos;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.jcsp.historiasinteractivas.R;
 
 public class FinalHistoriaDialogo {
 
-    public FinalHistoriaDialogo(final Context contexto) {
+    public FinalHistoriaDialogo(final Context contexto, String nombre_historia) {
         final Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setCancelable(true);
         dialogo.setContentView(R.layout.dialogo_final_historia);
 
-
-        //Imagen
-        //ImageView imgTit = (ImageView) dialogo.findViewById(R.id.imagen_final_historia);
-
+        TextView txt_cuerpo = dialogo.findViewById(R.id.felicitacion_final_historia);
+        txt_cuerpo.setText(contexto.getText(R.string.final1) + " " + nombre_historia + " " + contexto.getText(R.string.final2));
+        Button btn_cerrar = dialogo.findViewById(R.id.cerrar_felicitacion_final_historia);
+        btn_cerrar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                dialogo.dismiss();
+            }
+        });
 
         dialogo.show();
     }
