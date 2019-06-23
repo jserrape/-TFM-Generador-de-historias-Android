@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="¡Crea una cuenta antes de comenzar a descubrir historias!"
+        android:text="@string/crea_cuenta"
         android:textSize="17dp" />
 
     <ImageButton

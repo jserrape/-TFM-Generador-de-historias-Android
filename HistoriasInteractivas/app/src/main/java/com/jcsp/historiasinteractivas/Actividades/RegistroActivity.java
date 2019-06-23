@@ -85,9 +85,6 @@ public class RegistroActivity extends AppCompatActivity {
 
                         @Override
                         public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                            Log.d("RespuestaRegistro", response.body().toString());
-                            //TODO Cambiar mensaje del servidor en función del codigo que llegue
-                            Toast.makeText(getApplicationContext(), response.body().getResulado(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                             startActivityForResult(intent, 0);
                         }

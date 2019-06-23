@@ -32,7 +32,7 @@
         android:layout_above="@+id/loginemail"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="35dp"
-        android:text="¡Accede a una cuenta para buscar historias!"
+        android:text="@string/accede_a"
         android:textSize="17dp" />
 
     <EditText
@@ -65,7 +65,7 @@
         android:layout_marginEnd="29dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:text="¿Has olvidado la contraseña?"
+        android:text="@string/pass_olvidada"
         android:textColor="@color/colorlink" />
 
     <Button

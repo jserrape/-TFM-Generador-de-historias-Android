@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Juan Carlos Serrano Pérez on 23/06/19 8:27
+  ~  * Any question send an email to jcsp0003@red.ujaen.es
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 23/06/19 8:27
+  ~  */
+  -->
+
+<resources>
+    <string name="app_name">Interactive Stories</string>
+    <string name="facebook_app_id">326980148167119</string>
+
+    <!--- Varios -->
+    <string name="cargando">Loading...</string>
+    <string name="cerrar">Close</string>
+    <string name="ejemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.#Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. #Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+
+    <!--- Errores -->
+    <string name="error_conexion">Connection error has occurred</string>
+
+    <!--- Spash -->
+    <string name="realizado_por">Application made by \nJuan Carlos Serrano</string>
+
+    <!--- Carousel -->
+    <string name="empezar_juego">Start</string>
+    <string name="bienvenido">¡Welcome!</string>
+    <string name="bienvenido2">Start discovering incredible stories throughout the city while you discover it</string>
+    <string name="ubicacion">Location required</string>
+    <string name="ubicacion2">Make sure you assign the positioning permissions and activate them to be able to locate you</string>
+    <string name="camara">Camera required</string>
+    <string name="camara2">Make sure you assign the permissions to be able to use the camera</string>
+
+    <!--- Main Activity -->
+    <string name="cancel_login">Login canceled</string>
+    <string name="error_login">Error in the login</string>
+    <string name="ok_login">Login correct</string>
+    <string name="acceso">Access</string>
+    <string name="nueva_cuenta">New account</string>
+    <string name="accede_a">¡Access an account to find stories!</string>
+    <string name="pass_olvidada">Have you forgotten the password?</string>
+
+    <!--- Registro -->
+    <string name="usuario">User</string>
+    <string name="email">E-mail</string>
+    <string name="pass">Password</string>
+    <string name="registro">Sign in</string>
+    <string name="rellenar">Please, fill in all the fields.</string>
+    <string name="crea_cuenta">¡Create an account before you begin to discover stories!</string>
+
+    <!--- Cambiar contraseña -->
+    <string name="cambiar_pass">Change password</string>
+    <string name="confirmar2">Confirm</string>
+    <string name="texto_cambiar_pass">Enter your email and a request to change your password will be sent.</string>
+    <string name="mail_invalid">The email entered is not valid</string>
+    <string name="mail_enviado">An email has been sent to you, that action may take a few minutes.</string>
+
+    <!--- Historia -->
+    <string name="empezar">Start history</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--- Navigation Drawer -->
+    <string name="mapa">Map</string>
+    <string name="perfil">Profile</string>
+    <string name="misiones">Missions</string>
+    <string name="gestion">Management</string>
+    <string name="ajustes">Settings</string>
+    <string name="ayuda">Terms and Conditions</string>
+    <string name="cerrar_sesion">Sign off</string>
+
+    <!--- Ajustes -->
+    <string name="eliminar_cambios">Do you want to delete the changes?</string>
+    <string name="confirmar">Confirm</string>
+    <string name="guardar">Save</string>
+    <string name="cancelar">Cancel</string>
+    <string name="plano">Run in the background</string>
+    <string name="idioma">Language</string>
+    <string name="brujula">Compass</string>
+    <string name="btn_centrar">Center button</string>
+    <string name="btn_zoom">Zoom button</string>
+    <string name="estilo">Map style</string>
+    <string-array name="idiomas_array">
+        <item>Spanish</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="estilos_array">
+        <item>Standard</item>
+        <item>Dark</item>
+        <item>Silver</item>
+        <item>Aubergine</item>
+        <item>Night</item>
+        <item>Retro</item>
+        <item>Satelite</item>
+    </string-array>
+
+    <!--- Dialogo presentacion -->
+    <string name="detectar">Detect</string>
+
+    <!--- Dialogo escanear QR -->
+    <string name="busca">Find the QR Code of the area</string>
+    <string name="busca2">Search the QR Code of the mission</string>
+
+    <!--- Dialogo felicitacion ubicacion -->
+    <string name="felicitar_ubicacion">Congratulations! You are in the right location.\n Good luck with the test</string>
+    <string name="comenzar_prueba">Start test</string>
+
+    <!--- Dialogo pregunta -->
+    <string name="continuar">Continue</string>
+
+    <!--- Perfil -->
+    <string name="modificar_pass">Modify password</string>
+    <string name="pass_actu">Current password</string>
+    <string name="nueva_pass">New password</string>
+    <string name="repetir_pass">Repeat password</string>
+    <string name="eliminar_cuenta">Delete account</string>
+    <string name="seguro_eliminar">Are you sure you want to delete the account and all the data?</string>
+    <string name="no_coinciden">Passwords do not match</string>
+    <string name="pass_cambiada">The password has been successfully changed</string>
+
+    <!--- Fragment lista misiones -->
+    <string name="compleado">Realization:</string>
+    <string name="volver">Return</string>
+
+    <!--- Final del juego -->
+    <string name="final1">Congratulations for completing the story </string>
+    <string name="final2">. Esperamos que haya disfrutado del relato</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

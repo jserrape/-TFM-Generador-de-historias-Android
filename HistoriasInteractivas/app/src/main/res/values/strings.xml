@@ -25,9 +25,11 @@
     <!--- Main Activity -->
     <string name="cancel_login">Login cancelado</string>
     <string name="error_login">Error en el login</string>
-    <string name="ok_login">Error en el login</string>
+    <string name="ok_login">Login correcto</string>
     <string name="acceso">Acceso</string>
     <string name="nueva_cuenta">Nueva cuenta</string>
+    <string name="accede_a">¡Accede a una cuenta para buscar historias!</string>
+    <string name="pass_olvidada">¿Has olvidado la contraseña?</string>
 
     <!--- Registro -->
     <string name="usuario">Usuario</string>
@@ -35,6 +37,7 @@
     <string name="pass">Contraseña</string>
     <string name="registro">Registro</string>
     <string name="rellenar">Por favor, rellene todos los campos</string>
+    <string name="crea_cuenta">¡Crea una cuenta antes de comenzar a descubrir historias!</string>
 
     <!--- Cambiar contraseña -->
     <string name="cambiar_pass">Cambiar contraseña</string>
@@ -116,6 +119,9 @@
     <string name="compleado">Realización:</string>
     <string name="volver">Volver</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--- Final del juego -->
+    <string name="final1">Felicidades por completar la historia </string>
+    <string name="final2">. Esperamos que haya disfrutado del relato</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

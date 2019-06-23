@@ -52,7 +52,7 @@ public class ListaHistoriasActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         progressDialog = new ProgressDialog(this);
         progressDialog.setIcon(R.mipmap.ic_launcher);
-        progressDialog.setMessage(R.string.cargando + "");
+        progressDialog.setMessage(getString(R.string.cargando));
         progressDialog.show();
 
         clase = this;
