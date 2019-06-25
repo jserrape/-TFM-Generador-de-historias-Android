@@ -5,6 +5,8 @@
     <!--- Varios -->
     <string name="cargando">Cargando...</string>
     <string name="cerrar">Cerrar</string>
+    <string name="reiniciar">Reiniciar historia</string>
+    <string name="reiniciar_dialogo">¿Desea reiniciar la historia? Perderá todo el progreso realizado</string>
     <string name="ejemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.#Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. #Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
 
     <!--- Errores -->

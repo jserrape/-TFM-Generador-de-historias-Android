@@ -16,7 +16,6 @@ import com.jcsp.historiasinteractivas.Objetos_gestion.Pregunta;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -101,4 +100,9 @@ public interface GetPostService {
     @POST("/prueba")
     @FormUrlEncoded
     Call<Respuesta> enviar_texto(@Field("texto") String texto);
+
+    @POST("/rest/delete/progreso_historia")
+    @FormUrlEncoded
+    Call<Respuesta> reiniciar_progreso_historia(@Field("email") String email,
+                                                @Field("id_historia") int id_historia);
 }

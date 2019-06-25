@@ -114,6 +114,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             Bundle bundl = new Bundle();
             bundl.putSerializable("elist", (Serializable) historia.getMisiones());
             bundl.putSerializable("nd", this);
+            bundl.putInt("id_historia", this.historia.getId());
             fragment.setArguments(bundl);
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_ajustes) {

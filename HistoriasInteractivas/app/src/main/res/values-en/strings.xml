@@ -15,6 +15,8 @@
     <!--- Varios -->
     <string name="cargando">Loading...</string>
     <string name="cerrar">Close</string>
+    <string name="reiniciar">Restart history</string>
+    <string name="reiniciar_dialogo">Do you want to restart the story? It will lose all the progress made</string>
     <string name="ejemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.#Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. #Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
 
     <!--- Errores -->

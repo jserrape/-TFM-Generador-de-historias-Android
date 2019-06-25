@@ -18,16 +18,8 @@ public class Respuesta {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getResulado() {
         return resultado;
-    }
-
-    public void setResulado(String resulado) {
-        this.resultado = resulado;
     }
 
     @Override
