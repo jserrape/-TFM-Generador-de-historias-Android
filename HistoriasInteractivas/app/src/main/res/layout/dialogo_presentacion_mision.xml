@@ -52,8 +52,7 @@
                     android:layout_height="200dp"
                     android:layout_below="@+id/titulo_mision_presentacion"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    app:srcCompat="@drawable/com_facebook_button_icon_blue" />
+                    android:layout_marginTop="30dp"/>
 
                 <TextView
                     android:id="@+id/descripcion_inicial"

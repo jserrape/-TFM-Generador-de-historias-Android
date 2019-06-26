@@ -40,8 +40,7 @@
                     android:layout_height="200dp"
                     android:layout_below="@+id/titulo_mision_presentacion"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    app:srcCompat="@drawable/com_facebook_button_icon_blue" />
+                    android:layout_marginTop="30dp" />
 
                 <TextView
                     android:id="@+id/descripcion_final"
@@ -51,10 +50,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="30dp"
-                    android:gravity="center"
                     android:textSize="18dp"
-                    android:text="TextView" />
-
+                    android:text="@string/ejemplo"
+                    android:gravity="center" />
 
                 <Button
                     android:id="@+id/cerrar_presenacion_final"

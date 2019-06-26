@@ -22,8 +22,7 @@
         android:layout_above="@+id/accedecuentatext"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginRight="50dp"
-        tools:srcCompat="@drawable/com_facebook_button_icon_blue" />
+        android:layout_marginRight="50dp"/>
 
     <TextView
         android:id="@+id/accedecuentatext"
