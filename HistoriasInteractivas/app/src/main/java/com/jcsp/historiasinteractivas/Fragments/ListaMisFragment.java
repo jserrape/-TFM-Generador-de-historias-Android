@@ -41,6 +41,7 @@ import com.jcsp.historiasinteractivas.Util.AdaptadorListaPersonalizada;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -80,7 +81,13 @@ public class ListaMisFragment extends Fragment {
 
         listView = vista.findViewById(R.id.lista_fragment_misiones);
 
-        AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions, getContext());
+        List<Mision> misions_completadas = new ArrayList<>();
+        for (int i = 0; i < misions.size(); i++) {
+            if (!misions.get(i).getCompletado().equals("False")) {
+                misions_completadas.add(misions.get(i));
+            }
+        }
+        AdaptadorListaPersonalizada adaptador = new AdaptadorListaPersonalizada(getActivity(), misions_completadas, getContext());
         listView.setAdapter(adaptador);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,7 +96,7 @@ public class ListaMisFragment extends Fragment {
             }
         });
 
-        final FragmentActivity fr=this.getActivity();
+        final FragmentActivity fr = this.getActivity();
         Button btn_reinicio = vista.findViewById(R.id.btn_reiniciar);
         btn_reinicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,13 +106,13 @@ public class ListaMisFragment extends Fragment {
                 dialogo1.setCancelable(false);
                 dialogo1.setPositiveButton(getString(R.string.reiniciar), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                        SharedPreferences prefs= Objects.requireNonNull(fr).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+                        SharedPreferences prefs = Objects.requireNonNull(fr).getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
                         GetPostService mAPIService = ApiUtils.getAPIService();
-                        String mail=prefs.getString("email", "NULL");
+                        String mail = prefs.getString("email", "NULL");
                         mAPIService.reiniciar_progreso_historia(mail, id_historia).enqueue(new Callback<Respuesta>() {
                             @Override
                             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
-                                Intent intent= new Intent(nd, ListaHistoriasActivity.class);
+                                Intent intent = new Intent(nd, ListaHistoriasActivity.class);
                                 startActivity(intent);
                                 nd.finish();
                             }
